@@ -2,7 +2,7 @@ name: "create-package-and-release"
 on:
   push:
     branches:
-      - main
+      - packaging
 jobs:
   create-release:
     runs-on: ubuntu-latest
