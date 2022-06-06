@@ -29,7 +29,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.KOMPAD_TOKEN }}
         with:
           tag_name: app-v${{ env.PACKAGE_VERSION }}
-          release_name: "Kompad v${{ env.PACKAGE_VERSION }}"
+          release_name: "v${{ env.PACKAGE_VERSION }}"
           body: "See the assets to download this version and install."
           draft: true
           prerelease: false
