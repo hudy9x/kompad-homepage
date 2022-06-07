@@ -6,6 +6,7 @@ import LogoImage from "../assets/logo.png";
 import Link from "next/link";
 import { RiWindowsFill } from "react-icons/ri";
 import { IoLogoApple } from "react-icons/io";
+import { SiLinux } from "react-icons/si";
 import Head from "next/head";
 
 interface IReleaseAsset {
@@ -28,13 +29,22 @@ export default function Home({ release }: { release: IRelease }) {
   const { releases } = release;
   const windowFile = releases.find((r) => /\.msi$/.test(r.name));
   const macFile = releases.find((r) => /\.dmg$/.test(r.name));
+  const linuxFile = releases.find((r) => /\.app\.tar\.gz$/.test(r.name));
   const windowDownloadLink = windowFile ? windowFile.browser_download_url : "";
   const macDownloadLink = macFile ? macFile.browser_download_url : "";
+  const linuxDownloadLink = linuxFile ? linuxFile.browser_download_url : "";
 
   return (
     <>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
+        <title>Kompad</title>
+        <meta
+          name="description"
+          content="Một công cụ đơn giản để ghi chú và soạn thảo nội dung. Cung
+                  cấp chỉ những tính năng thiết yếu cho bạn như: Tiêu đề, đánh
+                  số thứ tự, hightlight nội dung hay tạo checklist đơn giản"
+        ></meta>
       </Head>
       <div className="relative bg-white overflow-hidden">
         <div
@@ -122,8 +132,18 @@ export default function Home({ release }: { release: IRelease }) {
                         disabled={!macDownloadLink}
                         className="disabled:opacity-70 inline-flex items-center gap-2 px-5 py-2 w-52 justify-center border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none"
                       >
-                        <IoLogoApple className="-ml-2" />
-                        <span>Apple</span>
+                        <IoLogoApple className="-ml-3" />
+                        <span>MacOS</span>
+                      </button>
+                    </Link>
+                    <Link href={linuxDownloadLink}>
+                      <button
+                        type="button"
+                        disabled={!linuxDownloadLink}
+                        className="disabled:opacity-70 inline-flex items-center gap-2 px-5 py-2 w-52 justify-center border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none"
+                      >
+                        <SiLinux className="-ml-3 " />
+                        <span>Linux</span>
                       </button>
                     </Link>
                   </div>
