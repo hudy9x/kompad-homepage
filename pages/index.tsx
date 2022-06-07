@@ -100,7 +100,7 @@ export default function Home({ release }: { release: IRelease }) {
                   📁 Tải xuống bộ cài tại đây
                 </p>
 
-                <div className="mt-5 flex gap-4 sm:justify-center">
+                <div className="mt-5 flex gap-4 sm:justify-center md:justify-start">
                   <Link href={windowDownloadLink}>
                     <button
                       type="button"
