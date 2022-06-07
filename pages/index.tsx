@@ -148,9 +148,8 @@ export default function Home({ release }: { release: IRelease }) {
                     </Link>
                   </div>
 
-                  <p className="mt-5 text-sm text-gray-500">
-                    Lưu ý: Đây chỉ là phiên bản thử nghiệm nên toàn bộ dữ liệu
-                    sẽ bị xóa đi .
+                  <p className="mt-5 text-sm text-gray-500 ">
+                  👽  Đây là <span className="underline decoration-pink-500">phiên bản beta</span>, mọi issue phát sinh các bạn có thể phản hội <a className="underline decoration-indigo-500" href="https://github.com/hudy9x/kompad-homepage/issues" target={'_blank'}>tại đây</a>
                   </p>
                 </div>
               </div>
