@@ -26,7 +26,8 @@ interface IRelease {
 }
 
 export default function Home({ release }: { release: IRelease }) {
-  const { releases } = release;
+  const { releases, tag_name: version } = release;
+  console.log("version", version);
   const windowFile = releases.find((r) => /\.msi$/.test(r.name));
   const macFile = releases.find((r) => /\.dmg$/.test(r.name));
   const linuxFile = releases.find((r) => /\.app\.tar\.gz$/.test(r.name));
@@ -107,12 +108,29 @@ export default function Home({ release }: { release: IRelease }) {
                 </h1>
                 <p className="mt-3 text-base leading-normal text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl sm:leading-9 xl:leading-9">
                   Một công cụ đơn giản để ghi chú và soạn thảo nội dung. Cung
-                  cấp chỉ những tính năng thiết yếu cho bạn như: Tiêu đề, đánh
-                  số thứ tự, hightlight nội dung hay tạo checklist đơn giản
+                  cấp chỉ những tính năng thiết yếu cho bạn như:{" "}
+                  <span className="underline decoration-green-500">
+                    Tiêu đề
+                  </span>
+                  ,{" "}
+                  <span className="underline decoration-orange-500">
+                    đánh số thứ tự
+                  </span>
+                  ,{" "}
+                  <span className="underline decoration-pink-500">
+                    hightlight nội dung
+                  </span>{" "}
+                  hay{" "}
+                  <span className="underline decoration-blue-500">
+                    tạo checklist đơn giản
+                  </span>
                 </p>
                 <div className="mt-8 sm:12 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                   <p className="text-base font-medium text-gray-900">
-                    📁 Tải xuống bộ cài tại đây
+                    <span className="rounded border border-violet-100 bg-violet-50 px-2.5 py-1 text-xs font-semibold text-violet-500 tracking-wide mr-2">
+                      {version}
+                    </span>
+                    <span>Tải xuống bộ cài tại đây</span>
                   </p>
 
                   <div className="mt-5 flex gap-4 sm:justify-center md:justify-start">
@@ -149,7 +167,19 @@ export default function Home({ release }: { release: IRelease }) {
                   </div>
 
                   <p className="mt-5 text-sm text-gray-500 ">
-                  👽  Đây là <span className="underline decoration-pink-500">phiên bản beta</span>, mọi issue phát sinh các bạn có thể phản hội <a rel="noreferrer" className="underline decoration-indigo-500" href="https://github.com/hudy9x/kompad-homepage/issues" target={'_blank'}>tại đây</a>
+                    👽 Đây là{" "}
+                    <span className="underline decoration-pink-500">
+                      phiên bản beta
+                    </span>
+                    , mọi issue phát sinh các bạn có thể phản hồi{" "}
+                    <a
+                      rel="noreferrer"
+                      className="underline hover:font-semibold decoration-indigo-500"
+                      href="https://github.com/hudy9x/kompad-homepage/issues"
+                      target={"_blank"}
+                    >
+                      tại đây
+                    </a>
                   </p>
                 </div>
               </div>
