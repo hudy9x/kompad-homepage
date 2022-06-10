@@ -7,6 +7,12 @@ import Link from "next/link";
 import { RiWindowsFill } from "react-icons/ri";
 import { IoLogoApple } from "react-icons/io";
 import { SiLinux } from "react-icons/si";
+import { FaFacebookSquare } from "react-icons/fa";
+import {
+  AiFillYoutube,
+  AiOutlineGithub,
+  AiOutlineGlobal,
+} from "react-icons/ai";
 import Head from "next/head";
 
 interface IReleaseAsset {
@@ -23,6 +29,35 @@ interface IRelease {
   release_notes: string;
   releases: IReleaseAsset[];
   tag_name: string;
+}
+
+function Profile() {
+  return (
+    <div className="mt-8 text-gray-500 flex gap-4 items-center">
+      <div className="flex justify-center gap-4">
+        <a
+          href="https://www.youtube.com/c/Komaster09/"
+          target={"_blank"}
+          rel="noreferrer"
+        >
+          <AiFillYoutube className="hover:text-red-500" />
+        </a>
+        <a
+          href="https://www.facebook.com/hudy9x"
+          target={"_blank"}
+          rel="noreferrer"
+        >
+          <FaFacebookSquare className="hover:text-blue-500" />
+        </a>
+        <a href="https://www.komaster.dev/" target={"_blank"} rel="noreferrer">
+          <AiOutlineGlobal className="hover:text-sky-400" />
+        </a>
+        <a href="https://github.com/hudy9x" target={"_blank"} rel="noreferrer">
+          <AiOutlineGithub className="hover:text-gray-800" />
+        </a>
+      </div>
+    </div>
+  );
 }
 
 export default function Home({ release }: { release: IRelease }) {
@@ -166,7 +201,7 @@ export default function Home({ release }: { release: IRelease }) {
                     </Link>
                   </div>
 
-                  <p className="mt-5 text-sm text-gray-500 ">
+                  <p className="mt-8 text-sm text-gray-500 ">
                     👽 Đây là{" "}
                     <span className="underline decoration-pink-500">
                       phiên bản beta
@@ -181,6 +216,8 @@ export default function Home({ release }: { release: IRelease }) {
                       tại đây
                     </a>
                   </p>
+
+                  <Profile />
                 </div>
               </div>
               <div className="mt-12 shadow-2xl relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
