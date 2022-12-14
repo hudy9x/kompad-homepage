@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.title {
+  @apply text-3xl;
+}
+
+.main-box {
+  @apply mx-auto max-w-7xl;
+}
+
+
+.logo {
+  @apply text-2xl font-bold text-gray-700;
+}
+
+.menu-container {
+  @apply space-x-4;
+}
+
+.menu-item {
+  @apply cursor-pointer px-3 py-1 hover:bg-gray-100 rounded-md text-gray-700;
+}
+
+.menu-item.active{
+  @apply bg-gray-100;
+}
+
+
+
+
