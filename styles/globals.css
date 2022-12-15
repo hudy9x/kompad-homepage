@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("./carousel.css");
+
 .title {
   @apply text-3xl;
 }
@@ -9,7 +11,6 @@
 .main-box {
   @apply mx-auto max-w-7xl;
 }
-
 
 .logo {
   @apply text-2xl font-bold text-gray-700;
@@ -28,9 +29,23 @@
 }
 
 
-
 .feature-carousel {
 
 }
+
+
+.carousel-link {
+  @apply cursor-pointer px-2.5 py-1 rounded-md border border-transparent ;
+}
+
+.carousel-link:hover,
+.carousel-link.active {
+  @apply bg-white border-gray-200 text-gray-700
+
+}
+
+
+
+
 
 

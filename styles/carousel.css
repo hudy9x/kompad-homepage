@@ -1,0 +1,42 @@
+.carousel-desc-popup {
+  position: absolute;
+}
+
+.carousel-point {
+  @apply w-3 h-3 rounded-full bg-yellow-400 cursor-pointer;
+  animation-name:glow;
+  animation-duration:1.5s;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+}
+
+.desc-container {
+  @apply relative opacity-0 transition-all ease-in-out;
+}
+
+.desc-container.active {
+  @apply opacity-100
+}
+
+.desc-dash {
+  @apply absolute bg-yellow-500;
+  height: 1px;
+}
+
+.carousel-desc-container {
+  @apply text-left w-52 absolute p-4 bg-white shadow-2xl rounded-md;
+}
+
+.carousel-desc-title {
+  @apply capitalize text-xl border-b border-gray-300 pb-1 mb-3 text-gray-600
+  ;
+}
+
+.carousel-desc-detail {
+  @apply text-sm text-gray-500;
+}
+
+@keyframes glow{
+  from{box-shadow:0px 0px 2px #fff,0px 0px 5px #ff0; opacity: 0.6}
+  to{box-shadow:0px 0px 8px #fff,0px 0px 8px #ff0; opacity: 1}
+}

@@ -132,7 +132,7 @@ export default function Home({ release }: { release: IRelease }) {
           </svg>
         </div>
 
-        <div className="relative pb-16 sm:pb-14 lg:pb-32">
+        <div className="relative">
           <Menu/>
           <Intro />
           <Features />

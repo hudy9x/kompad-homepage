@@ -1,67 +1,73 @@
 import { useState } from "react"
+import Image from "next/image"
+import headerImg from "../assets/Headers.png"
+import codeImg from "../assets/Code.png"
+import coverImg from "../assets/Cover.png"
+import diagramImg from "../assets/Diagram.png"
+import etcImg from "../assets/Etc.png"
+import imageImg from "../assets/Image.png"
+import inlineStyleImg from "../assets/Inline-style.png"
+import listImg from "../assets/List.png"
+import FeatureImage from "./features/FeatureImage"
+import FeatureHeader from "./features/FeatureHeader"
+import FeatureList from "./features/FeatureList"
+import FeatureCover from "./features/FeatureCover"
+import FeatureCode from "./features/FeatureCode"
+import FeatureDiagram from "./features/FeatureDiagram"
+import FeatureInlineStyle from "./features/FeatureInlineStyle"
+import FeatureEtc from "./features/FeatureEtc"
+
 export default function Features() {
   const [selected, setSelected] = useState(0)
   const [carousel, setCarousel] = useState([
     {
-      title: "Images", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
+      title: "Images", src: imageImg,
+      desc: <FeatureImage/>
     },
     {
-      title: "Headers", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
+      title: "Headers", src: headerImg,
+      desc: <FeatureHeader /> 
     },
     {
-      title: "Lists", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
+      title: "Lists", src: listImg,
+      desc: <FeatureList />    },
+    {
+      title: "Cover", src: coverImg,
+      desc: <FeatureCover />    },
+    {
+      title: "Codeblock", src: codeImg,
+      desc: <FeatureCode />    },
+    {
+      title: "Diagrams", src: diagramImg,
+      desc: <FeatureDiagram /> 
     },
     {
-      title: "Tables", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
-    },
+      title: "Inline styles", src: inlineStyleImg,
+      desc: <FeatureInlineStyle />    },
     {
-      title: "Codeblock", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
-    },
-    {
-      title: "Diagrams", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
-    },
-    {
-      title: "Inline styles", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
-    },
-    {
-      title: "etc...", src: "",
-      desc: [
-        { top: 10, left: 20, content: <div>content</div> },
-      ]
-    },
+      title: "etc...", src: etcImg,
+      desc: <FeatureEtc />    },
   ])
-  return <div id="feature">
-    <div className="main-box">
-      <h2 className="title text-center">Simple, yet Powerful</h2>
+
+  const selectedItem = carousel[selected]
+
+  return <div id="feature" className="bg-gray-50">
+    <div className="main-box pt-[130px] pb-[160px]">
+      <h2 className="title text-center pb-6 font-extrabold">Simple, yet Powerful</h2>
       <div className="feature-carousel">
-        <div className="flex items-center gap-2 justify-center">
+        <div className="flex items-center gap-2 justify-center pb-10">
           {carousel.map((item, index) => {
-            return <div key={index} className="carousel-link">{item.title}</div>
+            const active = index === selected ? 'active' : ''
+            return <div key={index}
+              onClick={() => setSelected(index)}
+              className={`carousel-link ${active}`}>{item.title}</div>
           })}
         </div>
-        <div className="carousel-images">
-          <div className="carousel-item"></div>
+        <div className="carousel-showcase text-center">
+          <div className="shadow-2xl inline-flex relative">
+            <Image src={selectedItem.src} width={540} height={591} title={selectedItem.title} />
+            {selectedItem.desc}
+          </div>
         </div>
       </div>
     </div>
