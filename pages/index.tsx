@@ -17,6 +17,9 @@ import Head from "next/head";
 import Menu from "../components/Menu";
 import Intro from "../components/Intro";
 import Features from "../components/Features";
+import Accessibility from "../components/Accessibility";
+import Theme from "../components/Theme";
+import LoveByUsers from "../components/LovedByUsers";
 
 interface IReleaseAsset {
   browser_download_url: string;
@@ -136,6 +139,9 @@ export default function Home({ release }: { release: IRelease }) {
           <Menu/>
           <Intro />
           <Features />
+          <Accessibility />
+          <Theme/>
+          <LoveByUsers />
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 interface Props {
   container: { x: number, y: number },
   dash: { x: number, y: number, width: number },
@@ -12,9 +12,15 @@ export default function FeatureBox({ container, dash, popup, title, desc }: Prop
   const { x: dx, y: dy, width: dw } = dash
   const { x: px, y: py } = popup
 
+  useEffect(() => {
+    setTimeout(() => {
+      setvisible(true)
+    }, 500)
+  })
+
   return <>
     <div className="carousel-desc-popup" style={{ top: cy, left: cx }}>
-      <div className="carousel-point" onMouseOver={() => setvisible(true)}></div>
+      <div className="carousel-point"></div>
       <div className={`desc-container ${visible ? "active" : ""}`}>
         <div className="desc-dash" style={{ top: dy, left: dx, width: dw }}></div>
         <div className="carousel-desc-container" style={{ top: py, left: px }}>
