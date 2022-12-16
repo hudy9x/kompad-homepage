@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import appImg from "../assets/app2.png";
-
 export default function Accessibility() {
   const accessList = [
     {
@@ -35,16 +34,16 @@ export default function Accessibility() {
     },
   ]
 
-  return <div id="accessibility" className="bg-orange-300 pt-[120px] py-[115px] border-b border-gray-200">
+  return <div id="accessibility" className="pt-[120px] py-[115px] border-b border-orange-100 bg-orange-50">
     <div className="main-box">
-      <h2 className="title3 text-orange-50">Accessibility</h2>
-      <p className="text-center pt-6">You focus on the content, Kompad helps with the rest</p>
+      <h2 className="title2 text-gray-700">Accessibility</h2>
+      <p className="text-center pt-6 text-gray-500">You focus on the content, Kompad helps with the rest</p>
       <div className="grid grid-cols-3 pt-[50px] w-[1020px] m-auto">
         {accessList.map((item, index) => {
           return <div className="access-item w-[300px] mb-8" key={index}>
             <Image src={appImg} alt="Image" height={100} width={300} className="rounded-md" />
-            <div className="access-title text-xl py-1 font-medium">{item.title}</div>
-            <p className="text-orange-900 text-sm">{item.desc}</p>
+            <div className="access-title text-xl py-2 pt-4 font-extrabold text-gray-700">{item.title}</div>
+            <p className="text-gray-500 text-sm">{item.desc}</p>
           </div>
         })}
       </div>
