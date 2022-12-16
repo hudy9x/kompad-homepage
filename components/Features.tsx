@@ -56,7 +56,7 @@ export default function Features() {
 
   const selectedItem = carousel[selected]
 
-  return <div id="feature" className="bg-pattern-1 border-b border-gray-200">
+  return <div id="features" className="bg-pattern-1 border-b border-gray-200">
     <div className="main-box pt-[130px] pb-[160px]">
       <h2 className="title2 pb-12">Simple, <span className="title-hl">yet</span> Powerful</h2>
       <div className="feature-carousel">

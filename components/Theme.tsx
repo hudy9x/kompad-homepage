@@ -6,7 +6,7 @@ import theme3 from '../assets/theme-3.png'
 export default function Theme() {
   return <div id="themes" className="pt-[80px] border-b border-gray-200">
     <div className="box-main">
-      <h2 className="title2">Theme selection</h2>
+      <h2 className="title2">Theme <span className="text-orange-400">collection</span> </h2>
       <p className="text-center pt-8">A bunches of theme for you. Or build your own</p>
       <div className="mt-10 text-center">
         <div className="theme-item">

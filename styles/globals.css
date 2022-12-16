@@ -18,8 +18,25 @@
   text-shadow: 5px 5px #e3e3e3;
 }
 
+.title3 {
+  @apply text-4xl text-center font-extrabold;
+  text-shadow: 5px 5px #d8a169 ;
+}
+
 .title-hl {
   @apply text-yellow-400;
+}
+
+.title-hl2 {
+  @apply text-green-400;
+}
+
+.title-hl3 {
+  @apply text-orange-400;
+}
+
+.title-hl4 {
+  @apply text-indigo-400;
 }
 
 .main-box {
@@ -41,12 +58,6 @@
 .menu-item.active{
   @apply bg-gray-100;
 }
-
-
-.feature-carousel {
-
-}
-
 
 .carousel-link {
   @apply cursor-pointer px-4 py-2 rounded-md border border-transparent uppercase text-xs italic text-yellow-900 ;
