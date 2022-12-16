@@ -3,9 +3,23 @@
 @tailwind utilities;
 
 @import url("./carousel.css");
+@import url("./button.css");
+
+.background {
+  background-color: #e7b75f;
+}
 
 .title {
   @apply text-3xl;
+}
+
+.title2 {
+  @apply text-4xl text-center font-extrabold;
+  text-shadow: 5px 5px #e3e3e3;
+}
+
+.title-hl {
+  @apply text-yellow-400;
 }
 
 .main-box {
@@ -35,7 +49,7 @@
 
 
 .carousel-link {
-  @apply cursor-pointer px-2.5 py-1 rounded-md border border-transparent ;
+  @apply cursor-pointer px-4 py-2 rounded-md border border-transparent uppercase text-xs italic text-yellow-900 ;
 }
 
 .carousel-link:hover,
@@ -49,6 +63,22 @@
   box-shadow: -20px 15px 20px -10px rgba(0,0,0,.5), 4px 0px 10px rgba(0,0,0,.1);
 }
 
+.bg-pattern-1 {
+  background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 50%, 
+    #f0f0f0 50%, #f0f0f0 75%, transparent 75%, #fff);
+  background-size: 5px 5px;
+}
 
+.footer-list h2{
+  @apply font-semibold text-lg;
+}
+
+.footer-list nav { 
+  @apply inline-flex flex-col gap-2 pt-2;
+}
+
+.footer-list nav a {
+  @apply text-sm text-yellow-800 hover:underline hover:bg-yellow-200;
+}
 
 

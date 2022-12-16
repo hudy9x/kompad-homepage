@@ -5,8 +5,9 @@ interface Props {
   popup: { x: number, y: number }
   title: string,
   desc: string | JSX.Element
+  delay?: number
 }
-export default function FeatureBox({ container, dash, popup, title, desc }: Props) {
+export default function FeatureBox({ container, dash, popup, title, desc, delay = 500 }: Props) {
   const [visible, setvisible] = useState(false)
   const { x: cx, y: cy } = container;
   const { x: dx, y: dy, width: dw } = dash
@@ -15,7 +16,7 @@ export default function FeatureBox({ container, dash, popup, title, desc }: Prop
   useEffect(() => {
     setTimeout(() => {
       setvisible(true)
-    }, 500)
+    }, delay)
   })
 
   return <>

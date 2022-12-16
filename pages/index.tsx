@@ -20,6 +20,9 @@ import Features from "../components/Features";
 import Accessibility from "../components/Accessibility";
 import Theme from "../components/Theme";
 import LoveByUsers from "../components/LovedByUsers";
+import Download from "../components/Download";
+import FAQs from "../components/FAQs";
+import Footer from "../components/Footer";
 
 interface IReleaseAsset {
   browser_download_url: string;
@@ -142,6 +145,13 @@ export default function Home({ release }: { release: IRelease }) {
           <Accessibility />
           <Theme/>
           <LoveByUsers />
+          <Download version={version} link={{
+            win: windowDownloadLink,
+            mac: macDownloadLink,
+            linux: linuxDownloadLink
+          }} />
+          <FAQs/>
+          <Footer />
         </div>
       </div>
     </>

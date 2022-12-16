@@ -22,38 +22,43 @@ export default function Features() {
   const [carousel, setCarousel] = useState([
     {
       title: "Images", src: imageImg,
-      desc: <FeatureImage/>
+      desc: <FeatureImage />
     },
     {
       title: "Headers", src: headerImg,
-      desc: <FeatureHeader /> 
+      desc: <FeatureHeader />
     },
     {
       title: "Lists", src: listImg,
-      desc: <FeatureList />    },
+      desc: <FeatureList />
+    },
     {
       title: "Cover", src: coverImg,
-      desc: <FeatureCover />    },
+      desc: <FeatureCover />
+    },
     {
       title: "Codeblock", src: codeImg,
-      desc: <FeatureCode />    },
+      desc: <FeatureCode />
+    },
     {
       title: "Diagrams", src: diagramImg,
-      desc: <FeatureDiagram /> 
+      desc: <FeatureDiagram />
     },
     {
       title: "Inline styles", src: inlineStyleImg,
-      desc: <FeatureInlineStyle />    },
+      desc: <FeatureInlineStyle />
+    },
     {
       title: "etc...", src: etcImg,
-      desc: <FeatureEtc />    },
+      desc: <FeatureEtc />
+    },
   ])
 
   const selectedItem = carousel[selected]
 
-  return <div id="feature" className="bg-gray-50 border-b border-gray-200">
+  return <div id="feature" className="bg-pattern-1 border-b border-gray-200">
     <div className="main-box pt-[130px] pb-[160px]">
-      <h2 className="title text-center pb-6 font-extrabold">Simple, yet Powerful</h2>
+      <h2 className="title2 pb-12">Simple, <span className="title-hl">yet</span> Powerful</h2>
       <div className="feature-carousel">
         <div className="flex items-center gap-2 justify-center pb-10">
           {carousel.map((item, index) => {
@@ -64,7 +69,7 @@ export default function Features() {
           })}
         </div>
         <div className="carousel-showcase text-center">
-          <div className="shadow-2xl inline-flex relative">
+          <div className="shadow-2xl shadow-gray-600 inline-flex relative">
             <Image src={selectedItem.src} width={540} height={591} title={selectedItem.title} />
             {selectedItem.desc}
           </div>

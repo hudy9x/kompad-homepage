@@ -7,6 +7,7 @@ export default function FeatureInlineStyle() {
       dash={{ x: -161, y: -6, width: 166 }}
       popup={{ x: -381, y: -60 }}
       title="Strong, Strikethrough, Emphasis, Code"
+      delay={500}
       desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Suspendisse eu ornare felis. Nulla sem metus, gravida vel dictum vel,"
     />
@@ -14,12 +15,14 @@ export default function FeatureInlineStyle() {
       dash={{ x: 6, y: -6, width: 200 }}
       popup={{ x: 218, y: -36 }}
       title="Hyperlink"
+      delay={700}
       desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Suspendisse eu ornare felis"
     />
     <FeatureBox container={{ x: 59, y: 422 }}
       dash={{ x: -121, y: -6, width: 126 }}
       popup={{ x: -345, y: -21 }}
+      delay={900}
       title="Shortcut keys"
       desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     />

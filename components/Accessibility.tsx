@@ -36,7 +36,7 @@ export default function Accessibility() {
   ]
   return <div id="accessibility" className="pt-[120px] py-[215px] border-b border-gray-200">
     <div className="main-box">
-      <h2 className="title text-center">Accessibility</h2>
+      <h2 className="title2">Accessibility</h2>
       <p className="text-center pt-6">You focus on the content, Kompad helps with the rest</p>
       <div className="grid grid-cols-3 pt-[50px] w-[1020px] m-auto">
         {accessList.map((item, index) => {
