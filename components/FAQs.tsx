@@ -34,7 +34,7 @@ export default function FAQs() {
     <div className="bg-gray-50 py-[150px]" id="faqs">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl divide-y-2 divide-gray-200">
-          <h2 className="title2 pb-12">
+          <h2 className="title2 pb-12 capitalize">
             Frequently asked <span className="text-pink-400">questions</span>
           </h2>
           <dl className="mt-6 space-y-6 divide-y divide-gray-200">

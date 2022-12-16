@@ -26,7 +26,7 @@ export default function Download({ version, link }: Props) {
               <p className="w-72 text-gray-500 pt-1">Stunning text editor that easy to use. Built for developer</p>
               <div className="flex gap-3 pt-3">
                 <a href={link.win} className="btn space-x-2"><RiWindowsFill /> <span>Window</span></a>
-                <a href={link.mac} className="btn space-x-2"> <IoLogoApple /> <span>MacOs</span></a>
+                <a href={link.mac} className="btn space-x-2"> <IoLogoApple /> <span>MacOS</span></a>
                 <a href={link.linux} className="btn space-x-2"> <SiLinux /> <span>Linux</span></a>
               </div>
             </div>
