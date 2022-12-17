@@ -38,8 +38,8 @@ export default function FAQs() {
             Frequently asked <span className="text-pink-400">questions</span>
           </h2>
           <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-            {faqs.map((faq) => (
-              <Disclosure as="div" key={faq.question} className="pt-6">
+            {faqs.map((faq, index) => (
+              <Disclosure as="div" key={index} className="pt-6">
                 {({ open }) => (
                   <>
                     <dt className="text-lg">

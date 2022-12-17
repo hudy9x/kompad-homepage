@@ -5,6 +5,10 @@
 @import url("./carousel.css");
 @import url("./button.css");
 
+body, html {
+  scroll-behavior: smooth;
+}
+
 .background {
   background-color: #e7b75f;
 }

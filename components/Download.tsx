@@ -19,7 +19,7 @@ export default function Download({ version, link }: Props) {
       <h2 className="title2 pb-16">want to try <span className="title-hl4">Kompad</span> ?</h2>
       <div className="flex justify-center">
         <div className="space-y-5">
-          <div className="flex items-start gap-8 p-12 bg-white rounded-lg shadow-2xl">
+          <div className="flex items-start gap-8 p-12 bg-white/80 rounded-lg shadow-2xl">
             <Image src={appIcon} alt="App icon" height={120} width={106} />
             <div>
               <small className="text-xs text-yellow-600">Version {version}</small>

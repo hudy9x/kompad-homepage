@@ -19,7 +19,7 @@ import FeatureEtc from "./features/FeatureEtc"
 
 export default function Features() {
   const [selected, setSelected] = useState(0)
-  const [carousel, setCarousel] = useState([
+  const [carousel] = useState([
     {
       title: "Images", src: imageImg,
       desc: <FeatureImage />
@@ -56,7 +56,7 @@ export default function Features() {
 
   const selectedItem = carousel[selected]
 
-  return <div id="features" className="bg-pattern-1 border-b border-orange-100">
+  return <div id="features" className="bg-pattern-1 border-b border-gray-300">
     <div className="main-box pt-[130px] pb-[160px]">
       <h2 className="title2 pb-12">Simple, <span className="title-hl">yet</span> Powerful</h2>
       <div className="feature-carousel">
@@ -70,7 +70,7 @@ export default function Features() {
         </div>
         <div className="carousel-showcase text-center">
           <div className="shadow-2xl shadow-gray-600 inline-flex relative">
-            <Image src={selectedItem.src} width={540} height={591} title={selectedItem.title} />
+            <Image src={selectedItem.src} width={540} height={591} title={selectedItem.title} alt={selectedItem.title} />
             {selectedItem.desc}
           </div>
         </div>
