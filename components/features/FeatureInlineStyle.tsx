@@ -8,23 +8,27 @@ export default function FeatureInlineStyle() {
       popup={{ x: -381, y: -60 }}
       title="Strong, Strikethrough, Emphasis, Code"
       delay={500}
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Suspendisse eu ornare felis. Nulla sem metus, gravida vel dictum vel,"
+      desc="Create a strong, strike-through, emphasis and code text easily with markdown syntax."
     />
     <FeatureBox container={{ x: 354, y: 253 }}
       dash={{ x: 6, y: -6, width: 200 }}
       popup={{ x: 218, y: -36 }}
       title="Hyperlink"
       delay={700}
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Suspendisse eu ornare felis"
+      desc="It also provide a hyperlink like this."
     />
     <FeatureBox container={{ x: 59, y: 422 }}
       dash={{ x: -121, y: -6, width: 126 }}
       popup={{ x: -345, y: -21 }}
       delay={900}
       title="Shortcut keys"
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      desc={<>For quickly manipulation, you can also using shorcut keys like:
+        <div className="flex gap-2 text-xs whitespace-nowrap mt-2">
+          <div><kbd>Ctrl</kbd> <kbd>b</kbd></div>
+          <div><kbd>Ctrl</kbd> <kbd>i</kbd></div>
+          <div><kbd>Ctrl</kbd> <kbd>u</kbd></div>
+        </div>
+      </>}
     />
   </>
 }

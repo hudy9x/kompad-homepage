@@ -7,24 +7,21 @@ export default function FeatureImage() {
       popup={{ x: -270, y: -60 }}
       delay={500}
       title="Upload images"
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Suspendisse eu ornare felis. Nulla sem metus, gravida vel dictum vel,"
+      desc="Like others text editors you can also upload images to Kompad."
     />
     <FeatureBox container={{ x: 474, y: 440 }}
       dash={{ x: 6, y: -6, width: 100 }}
       popup={{ x: 116, y: -60 }}
       title="Drag n drop"
       delay={700}
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Suspendisse eu ornare felis"
+      desc="Besides, it also allows you to drag and drop image directly into it."
     />
     <FeatureBox container={{ x: 415, y: 25 }}
       dash={{ x: 6, y: -6, width: 137 }}
       popup={{ x: 158, y: -24 }}
       delay={900}
       title="Image button"
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Suspendisse eu ornare felis"
+      desc="Insert direct image link through this button."
     />
   </>
 }

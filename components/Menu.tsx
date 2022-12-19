@@ -7,10 +7,10 @@ export default function Menu() {
         <Link href="/">Kompad</Link>
       </div>
       <div className="menu-container">
-        <Link href={"/#features"}><span className="menu-item">Features</span></Link>
-        <Link href={"/#themes"}><span className="menu-item">Themes</span></Link>
-        <Link href={"/#download"}><span className="menu-item">Download</span></Link>
-        <Link href={"/#faqs"}><span className="menu-item">FAQs</span></Link>
+        <Link href={"/#features"}><span className="menu-item" data-name="features">Features</span></Link>
+        <Link href={"/#themes"}><span className="menu-item" data-name="themes">Themes</span></Link>
+        <Link href={"/#download"}><span className="menu-item" data-name="download">Download</span></Link>
+        <Link href={"/#faqs"}><span className="menu-item" data-name="faqs">FAQs</span></Link>
       </div>
     </div>
   </div>

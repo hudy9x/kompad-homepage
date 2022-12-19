@@ -8,15 +8,14 @@ export default function FeatureHeader() {
       popup={{ x: -270, y: -60 }}
       delay={500}
       title="Heading"
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Suspendisse eu ornare felis. Nulla sem metus, gravida vel dictum vel,"
+      desc="Kompad allows some heading types from <h1/> to <h4/>."
     />
     <FeatureBox container={{ x: 169, y: 54 }}
       dash={{ x: 6, y: -6, width: 117 }}
       popup={{ x: 139, y: -44 }}
       delay={700}
       title="Heading button"
-      desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      desc="Easy to insert heading through these control buttons"
     />
     <FeatureBox container={{ x: 269, y: 454 }}
       dash={{ x: 6, y: -6, width: 195 }}

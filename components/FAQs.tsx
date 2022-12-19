@@ -1,26 +1,27 @@
 import { Disclosure } from '@headlessui/react'
 import { ChevronDoubleDownIcon } from '@heroicons/react/outline'
+import AutoActiveMenu from './AutoActiveMenu'
 
 const faqs = [
   {
-    question: "What's the best thing about Switzerland?",
+    question: "What platforms does Kompad support ?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "For now, we only support web and desktop versions. You can visit web version on https://kompad.vercel.app",
   },
   {
-    question: "What's the best thing about Switzerland?",
+    question: "Is there a free version for newbie ?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "No. But you can download and try a trail version in 30 days",
   },
   {
-    question: "What's the best thing about Switzerland?",
+    question: "Is Kompad support markdown syntax ?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "Not all markdown syntaxes supported. You could use some syntax such as: heading, code, blockqoutes, code highlighting, unordered list, ordered list.",
   },
   {
-    question: "What's the best thing about Switzerland?",
+    question: "Can i share my document to others ?",
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      "Yes, you can. Just right click on the document and select 'Share' button.",
   },
   // More questions...
 ]
@@ -30,7 +31,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function FAQs() {
-  return (
+  return (<AutoActiveMenu name="faqs">
     <div className="bg-gray-50 py-[150px]" id="faqs">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl divide-y-2 divide-gray-200">
@@ -64,5 +65,6 @@ export default function FAQs() {
         </div>
       </div>
     </div>
+  </AutoActiveMenu>
   )
 }

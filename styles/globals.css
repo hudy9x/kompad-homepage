@@ -18,6 +18,7 @@ body, html {
 }
 
 .title2 {
+  color: #29282f;
   @apply text-4xl text-center font-extrabold;
   text-shadow: 5px 5px #e3e3e3;
 }
@@ -43,6 +44,10 @@ body, html {
   @apply text-indigo-400;
 }
 
+kbd {
+  @apply border rounded-md py-0.5 px-1 bg-gray-50;
+}
+
 .main-box {
   @apply mx-auto max-w-7xl;
 }
@@ -56,11 +61,33 @@ body, html {
 }
 
 .menu-item {
-  @apply cursor-pointer px-3 py-1 hover:bg-gray-100 rounded-md text-gray-700;
+  @apply cursor-pointer px-3 py-1 text-gray-700;
 }
 
-.menu-item.active{
-  @apply bg-gray-100;
+.menu-item.active {
+  @apply relative;
+}
+
+.menu-item.active:after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+}
+
+.menu-item.active[data-name="features"]:after {
+  @apply bg-yellow-400;
+}
+.menu-item.active[data-name="themes"]:after {
+  @apply bg-orange-400;
+}
+.menu-item.active[data-name="download"]:after {
+  @apply bg-indigo-400;
+}
+.menu-item.active[data-name="faqs"]:after {
+  @apply bg-pink-400;
 }
 
 .carousel-link {

@@ -28,11 +28,10 @@ export default function Footer() {
         <div className="footer-list">
           <h2>Contacts</h2>
           <nav className="flex flex-col">
-            <a href="">Home</a>
+            <a href="">Facebook</a>
             <a href="">Twitter</a>
-            <a href="">Email</a>
+            <a href="mailto:hudy9x@gmail.com">Email</a>
             <a href="">Issues</a>
-            <a href="">Team</a>
           </nav>
         </div>
         <div className="footer-list">

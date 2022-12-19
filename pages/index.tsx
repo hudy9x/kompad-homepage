@@ -23,6 +23,7 @@ import LoveByUsers from "../components/LovedByUsers";
 import Download from "../components/Download";
 import FAQs from "../components/FAQs";
 import Footer from "../components/Footer";
+import AutoActiveMenu from "../components/AutoActiveMenu";
 
 interface IReleaseAsset {
   browser_download_url: string;
@@ -78,6 +79,11 @@ export default function Home({ release }: { release: IRelease }) {
   const windowDownloadLink = windowFile ? windowFile.browser_download_url : "";
   const macDownloadLink = macFile ? macFile.browser_download_url : "";
   const linuxDownloadLink = linuxFile ? linuxFile.browser_download_url : "";
+  const links = {
+    win: windowDownloadLink,
+    mac: macDownloadLink,
+    linux: linuxDownloadLink
+  };
 
   return (
     <>
@@ -141,15 +147,13 @@ export default function Home({ release }: { release: IRelease }) {
         <div className="relative">
           <Menu/>
           <Intro />
-          <Features />
-          <Accessibility />
+          <AutoActiveMenu name="features" ratio={0.3}>
+            <Features />
+            <Accessibility />
+          </AutoActiveMenu>
           <Theme/>
           <LoveByUsers />
-          <Download version={version} link={{
-            win: windowDownloadLink,
-            mac: macDownloadLink,
-            linux: linuxDownloadLink
-          }} />
+          <Download version={version} link={links} />
           <FAQs/>
           <Footer />
         </div>

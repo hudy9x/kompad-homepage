@@ -2,10 +2,10 @@ import Image from "next/image";
 import theme1 from '../assets/theme-1.png'
 import theme2 from '../assets/theme-2.png'
 import theme3 from '../assets/theme-3.png'
-import IntersecObserver from "./IntersecObserver";
+import AutoActiveMenu from "./AutoActiveMenu";
 
 export default function Theme() {
-  return <IntersecObserver>
+  return <AutoActiveMenu name="themes">
     <div id="themes" className="pt-[80px] border-b border-gray-200">
       <div className="box-main">
         <h2 className="title2">Theme <span className="text-orange-400">collection</span> </h2>
@@ -23,5 +23,5 @@ export default function Theme() {
         </div>
       </div>
     </div>
-  </IntersecObserver>
+  </AutoActiveMenu>
 }

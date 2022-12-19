@@ -3,6 +3,7 @@ import { IoLogoApple } from "react-icons/io";
 import { SiLinux } from "react-icons/si";
 import Image from "next/image";
 import appIcon from "../assets/logo.png"
+import AutoActiveMenu from "./AutoActiveMenu";
 
 interface Props {
   version: string
@@ -14,7 +15,8 @@ interface Props {
 }
 
 export default function Download({ version, link }: Props) {
-  return <div id="download" className="bg-pattern-1 pt-[200px] pb-[250px] border-b border-gray-200">
+  return <AutoActiveMenu name="download">
+    <div id="download" className="bg-pattern-1 pt-[200px] pb-[250px] border-b border-gray-200">
     <div className="main-box">
       <h2 className="title2 pb-16">want to try <span className="title-hl4">Kompad</span> ?</h2>
       <div className="flex justify-center">
@@ -27,7 +29,7 @@ export default function Download({ version, link }: Props) {
               <div className="flex gap-3 pt-3">
                 <a href={link.win} className="btn space-x-2"><RiWindowsFill /> <span>Window</span></a>
                 <a href={link.mac} className="btn space-x-2"> <IoLogoApple /> <span>MacOS</span></a>
-                <a href={link.linux} className="btn space-x-2"> <SiLinux /> <span>Linux</span></a>
+                {/* <a href={link.linux} className="btn space-x-2"> <SiLinux /> <span>Linux</span></a> */}
               </div>
             </div>
           </div>
@@ -35,4 +37,5 @@ export default function Download({ version, link }: Props) {
       </div>
     </div>
   </div >
+  </AutoActiveMenu>
 }
