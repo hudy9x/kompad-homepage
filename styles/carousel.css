@@ -28,8 +28,7 @@
 }
 
 .carousel-desc-title {
-  @apply capitalize text-lg pb-2 border-b border-dashed border-gray-300 mb-3 text-gray-600
-  ;
+  @apply pb-2 border-b border-dashed border-gray-300 mb-3 text-gray-600 uppercase text-sm font-bold;
 }
 
 .carousel-desc-detail {
@@ -40,3 +39,4 @@
   from{box-shadow:0px 0px 2px #fff,0px 0px 5px #ff0; opacity: 0.6}
   to{box-shadow:0px 0px 8px #fff,0px 0px 8px #ff0; opacity: 1}
 }
+
