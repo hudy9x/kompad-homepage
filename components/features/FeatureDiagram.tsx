@@ -10,7 +10,7 @@ export default function FeatureDiagram() {
       title="Sequence diagram"
       desc={<>
         <p className="pb-2">Diplays sequence diagram in preview mode. Easy to update and switching to another diagram. </p>
-        <p>For more information: <a className="text-yellow-500 hover:underline" target={"_blank"} href="https://mermaid-js.github.io/mermaid/syntax/sequenceDiagram.html">https://mermaid-js.github.io</a></p>
+        <p>For more information: <a className="text-yellow-500 hover:underline" target={"_blank"} rel="noreferrer" href="https://mermaid-js.github.io/mermaid/syntax/sequenceDiagram.html">https://mermaid-js.github.io</a></p>
       </>}
     />
     <FeatureBox container={{ x: 495, y: 25 }}
