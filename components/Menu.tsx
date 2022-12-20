@@ -11,6 +11,7 @@ export default function Menu() {
         <Link href={"/#themes"}><span className="menu-item" data-name="themes">Themes</span></Link>
         <Link href={"/#download"}><span className="menu-item" data-name="download">Download</span></Link>
         <Link href={"/#faqs"}><span className="menu-item" data-name="faqs">FAQs</span></Link>
+        <Link href={"/signin"}><span className="menu-item bg-gray-50 rounded-md border border-gray-300 hover:bg-gray-100">Sign in</span></Link>
       </div>
     </div>
   </div>
