@@ -1,3 +1,126 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("./carousel.css");
+@import url("./button.css");
+
+body, html {
+  scroll-behavior: smooth;
+}
+
+.background {
+  background-color: #e7b75f;
+}
+
+.title {
+  @apply text-3xl;
+}
+
+.title2 {
+  color: #29282f;
+  @apply text-4xl text-center font-extrabold;
+  text-shadow: 5px 5px #e3e3e3;
+}
+
+.title3 {
+  @apply text-4xl text-center font-extrabold;
+  text-shadow: 5px 5px #d8a169 ;
+}
+
+.title-hl {
+  @apply text-yellow-400;
+}
+
+.title-hl2 {
+  @apply text-green-400;
+}
+
+.title-hl3 {
+  @apply text-orange-400;
+}
+
+.title-hl4 {
+  @apply text-indigo-400;
+}
+
+kbd {
+  @apply border rounded-md py-0.5 px-1 bg-gray-50;
+}
+
+.main-box {
+  @apply mx-auto max-w-7xl;
+}
+
+.logo {
+  @apply text-2xl font-bold text-gray-700;
+}
+
+.menu-container {
+  @apply space-x-4;
+}
+
+.menu-item {
+  @apply cursor-pointer px-3 py-1 text-gray-700;
+}
+
+.menu-item.active {
+  @apply relative;
+}
+
+.menu-item.active:after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+}
+
+.menu-item.active[data-name="features"]:after {
+  @apply bg-yellow-400;
+}
+.menu-item.active[data-name="themes"]:after {
+  @apply bg-orange-400;
+}
+.menu-item.active[data-name="download"]:after {
+  @apply bg-indigo-400;
+}
+.menu-item.active[data-name="faqs"]:after {
+  @apply bg-pink-400;
+}
+
+.carousel-link {
+  @apply cursor-pointer px-4 py-2 rounded-md border border-transparent uppercase text-xs italic text-yellow-900 ;
+}
+
+.carousel-link:hover,
+.carousel-link.active {
+  @apply bg-white border-gray-200 text-gray-700
+
+}
+
+.theme-item {
+  @apply inline-flex relative;
+  box-shadow: -20px 15px 20px -10px rgba(0,0,0,.5), 4px 0px 10px rgba(0,0,0,.1);
+}
+
+.bg-pattern-1 {
+  background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%, transparent 50%, 
+    #f0f0f0 50%, #f0f0f0 75%, transparent 75%, #fff);
+  background-size: 5px 5px;
+}
+
+.footer-list h2{
+  @apply font-semibold text-lg;
+}
+
+.footer-list nav { 
+  @apply inline-flex flex-col gap-2 pt-2;
+}
+
+.footer-list nav a {
+  @apply text-sm text-yellow-800 hover:underline hover:bg-yellow-200;
+}
+
+
