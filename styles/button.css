@@ -1,5 +1,15 @@
 .btn {
   @apply inline-flex items-center rounded-md border px-3 py-2 shadow-sm; 
   @apply border-gray-300 bg-white text-sm font-medium leading-4 text-gray-700;
-  @apply hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  @apply hover:bg-gray-50;
+  @apply justify-center;
+}
+
+.btn-block {
+  @apply w-full;
+}
+
+.btn.btn-secondary {
+  @apply bg-gray-700 text-white border-gray-700;
+  @apply hover:bg-gray-600;
 }
