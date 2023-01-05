@@ -13,3 +13,8 @@
   @apply bg-gray-700 text-white border-gray-700;
   @apply hover:bg-gray-600;
 }
+
+.btn.btn-primary {
+  @apply bg-indigo-600 text-white border-indigo-600;
+  @apply hover:bg-indigo-500;
+}

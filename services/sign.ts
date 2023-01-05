@@ -11,7 +11,13 @@ export const signIn = (email: string, password: string): Promise<string> => {
         return reject('error')
       }
 
-
+      isUserVerified(user.uid).then(verified => {
+        if (verified) {
+          resolve('ok');
+          return;
+        }
+        reject('error');
+      })
 
     }).catch(err => {
       reject(err.code)
@@ -20,13 +26,17 @@ export const signIn = (email: string, password: string): Promise<string> => {
 }
 
 export const isUserVerified = async (uid: string) => {
-  const q = query(collection(db, 'users'), where('status', '==', 'ACTIVE'), limit(1))
-  const snapshot = await getDocs(q)
-  
+  const q = query(collection(db, 'users'),
+    where('uid', '==', uid),
+    where('status', '==', 'ACTIVE'),
+    limit(1))
+  const snapshot = await getDocs(q);
+
   if (snapshot.empty) {
-    return 0;
+    return false;
   }
 
+  return true;
 
 }
 
