@@ -1,7 +1,7 @@
-import { useFormik } from "formik"
+import { FormikProps, useFormik } from "formik"
 import Image from "next/image";
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import tpbankQR from "../assets/TPBank-QR.png";
 import ProtectedLayout from "../components/ProtectedLayout"
 
@@ -10,72 +10,45 @@ const notificationMethods = [
   { id: 'paypal', title: 'Paypal' },
 ]
 
+interface OrderFormValues {
+  email: string
+  password: string
+  unit: number
+  subtotal: number
+  paymentMethod: string
+}
 
-export default function Checkout() {
-  const yearlyCost = 25;
-  const monthlyCost = 3;
-  const {query} = useRouter()
-  const formik = useFormik({
-    initialValues: {
-      unit: query.type === 'month' ? 12 : 1,
-      subtotal: 0
-    },
-    onSubmit: (values) => {
-      console.log(values)
-    },
-  })
+interface IOrderSummaryProps {
+  formik: FormikProps<OrderFormValues>
+  yearlyCost: number
+  monthlyCost: number
+}
 
-  useEffect(() => {
-    console.log(formik.values.unit)
-    const unit = formik.values.unit;
+function calculateCost (subtotal: number) {
+  const tax = +(subtotal * 0.1).toFixed(2);
+  return {
+    subTotal: subtotal,
+    tax,
+    total: subtotal + tax
+  }
+}
 
-    if (unit < 12) {
-      formik.setValues({
-        ...formik.values,
-        subtotal: unit * monthlyCost
-      })
-    }
+function OrderSummary({formik, yearlyCost, monthlyCost}: IOrderSummaryProps) {
+  
+  const {subTotal, tax, total} = calculateCost(formik.values.unit)
 
-    if (unit >=12) {
-      const years = unit/12;
-      const roundedYears = Math.round(years)
-      let subtotal = roundedYears * yearlyCost;
-
-      if (years - roundedYears > 0) {
-        const month = unit - roundedYears * 12;
-        subtotal += month * monthlyCost;
-      }
-
-      formik.setValues({
-        ...formik.values,
-        subtotal: subtotal
-      })
-    }
-  }, [formik.values.unit])
-
-  const subTotal = formik.values.subtotal;
-  const tax = +(subTotal * 0.1).toFixed(2);
-  const total = subTotal + tax;
-
-
-  return <div id="checkout" className="">
-    <div className="mainbox pt-32 pb-20">
-      <h2 className="title2">Checkout</h2>
-      <form className="checkout-form mt-8 p-4 md:w-[1040px] m-auto grid grid-cols-2 divide-x shadow rounded-md border"
-        onSubmit={formik.handleSubmit}
-      >
-        <div className="checkout-summary pr-4">
+  return <div className="checkout-summary">
           <h2 className="text-xl font-bold mb-4">Order summary</h2>
           <div className="checkout-detail">
             <div className="flex items-center justify-between bg-gray-100 p-3 rounded-md border border-gray-200">
               <h2>Kompad app</h2>
-              <div>
+              <div className="flex items-center gap-2">
                 <input type="text" 
                   id="unit"
                   value={formik.values.unit}
                   onChange={formik.handleChange}
                   className="w-12 h-7 rounded-md border border-gray-400 text-center"  />
-                {' '}/ month
+                  <span>/ month</span>
               </div>
               <span>${monthlyCost}</span>
             </div>
@@ -107,37 +80,13 @@ export default function Checkout() {
             </div>
           </div>
         </div>
-        <div className="checkout-info pl-4">
-          <h2 className="text-xl font-bold">Enter your email (new or existing users)</h2>
-          <p className="text-gray-400 text-sm mt-1 mb-4">New users will set a password after purchase</p>
-          
-          <div className="grid grid-cols-2 gap-3">
+}
 
-          <div>
-            <div className="mt-1">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                placeholder="Email"
-              />
-            </div>
-          </div>
-          <div>
-            <div className="mt-1">
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                placeholder="Password"
-              />
-            </div>
-          </div>
-          </div>  
-          <div className="mt-3">
-            <h2 className="mb-3">Payment method</h2>
+function OrderPayment() {
+  return <>
+        <div>
+          <div className="">
+            <h2 className="text-xl font-bold mb-3">Payment method</h2>
 
             <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-5">
               {notificationMethods.map((notificationMethod) => (
@@ -156,11 +105,100 @@ export default function Checkout() {
               ))}
             </div>
           </div>
-          <div className="hidden bank bg-gray-100 p-4 rounded-md border mt-3">
+          <div className="bank bg-gray-100 inline-flex w-full justify-center p-4 rounded-md border mt-3">
             <Image src={tpbankQR} alt="Tpban" width="200" height="200" className="" />
           </div>
-          <button className="btn btn-primary btn-block mt-4">Đi tới bước thanh toán</button>
+        
+      <div className="bank-content mt-3 space-y-1">
+        <div className="flex items-center justify-between">
+          <h2 className="text-gray-500">Chủ tài khoản</h2>
+          <p className="font-bold">NGUYEN HUU DAI</p>
         </div>
+        <div className="flex items-center justify-between">
+          <h2 className="text-gray-500">Số tài khoản</h2>
+          <p className="font-bold">01005134001</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <h2 className="text-gray-500">Ngân hàng</h2>
+          <p className="font-bold">Tiên Phong Bank (TPBank)</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <h2 className="text-gray-500">Nội dung chuyển khoản</h2>
+          <p className="font-bold">wedse12</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <h2 className="text-gray-500">Tổng tiền</h2>
+          <p className="font-bold text-red-400">{5 * 23450}</p>
+        </div>
+      </div>
+        </div>
+    </>
+}
+
+export default function Checkout() {
+  const yearlyCost = 25;
+  const monthlyCost = 3;
+  const {query} = useRouter()
+  const [step, nextStep] = useState(1)
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      unit: query.type === 'month' ? 12 : 1,
+      subtotal: 0,
+      paymentMethod: ''
+    },
+    onSubmit: (values) => {
+      console.log(values)
+    },
+  })
+
+  useEffect(() => {
+    const unit = formik.values.unit;
+
+    if (unit < 12) {
+      formik.setValues({
+        ...formik.values,
+        subtotal: unit * monthlyCost
+      })
+    }
+
+    if (unit >=12) {
+      const years = unit/12;
+      const roundedYears = Math.round(years)
+      let subtotal = roundedYears * yearlyCost;
+
+      if (years - roundedYears > 0) {
+        const month = unit - roundedYears * 12;
+        subtotal += month * monthlyCost;
+      }
+
+      formik.setValues({
+        ...formik.values,
+        subtotal: subtotal
+      })
+    }
+  }, [formik.values.unit])
+
+  const {subTotal, tax, total} = calculateCost(formik.values.unit)
+
+  return <div id="checkout" className="bg-gray-50 h-screen">
+    <div className="mainbox pt-24 pb-20">
+      <h2 className="title2">Checkout</h2>
+      <form className="checkout-form bg-white mt-8 px-8 py-8 m-auto shadow-xl rounded-md border md:w-[500px] space-y-4"
+        onSubmit={formik.handleSubmit}
+      >
+        { step === 2 ? <OrderPayment /> : null }
+        { step === 2 ? <div className="text-sm text-indigo-600 hover:underline cursor-pointer" onClick={() => nextStep(1)}>{'Go back to update order infomation'}</div> : null }
+
+        { step === 1 ? <OrderSummary formik={formik} yearlyCost={yearlyCost} monthlyCost={monthlyCost} /> : null }
+
+        <button 
+          className={`btn btn-primary btn-block mt-4 ${step === 1 ? '' : 'hidden'}`} 
+          onClick={() => nextStep(step + 1)}>1/2 Đi tới bước thanh toán</button>
+        <button 
+          className={`btn btn-primary btn-block mt-4 ${step === 2 ? '' : 'hidden'}`} 
+          onClick={() => nextStep(step + 1)}>2/2 Thanh toán</button>
       </form>
     </div>
   </div>

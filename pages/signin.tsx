@@ -11,11 +11,11 @@ export default function Signin() {
     onSubmit: values => {
       const { email, password } = values;
       signIn(email, password).then(res => {
-
+        console.log(res)
 
       }).catch(err => {
-          console.dir(err.code)
-        })
+        console.dir(err)
+      })
 
     }
   })

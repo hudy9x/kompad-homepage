@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth"
-import { collection, getDocs, limit, query, where } from "firebase/firestore"
+import { doc, collection, getDoc, getDocs, limit, query, where } from "firebase/firestore"
 import { auth, db } from "../libs/firebase"
 
 export const signIn = (email: string, password: string): Promise<string> => {
@@ -26,17 +26,20 @@ export const signIn = (email: string, password: string): Promise<string> => {
 }
 
 export const isUserVerified = async (uid: string) => {
-  const q = query(collection(db, 'users'),
-    where('uid', '==', uid),
-    where('status', '==', 'ACTIVE'),
-    limit(1))
-  const snapshot = await getDocs(q);
+  // const q = query(collection(db, 'users'),
+  //   where('uid', '==', uid),
+  //   where('status', '==', 'ACTIVE'),
+  //   limit(1))
+  // const snapshot = await getDocs(q);
 
-  if (snapshot.empty) {
-    return false;
+  const snapshot = await getDoc(doc(db, 'users', uid))
+
+  if (snapshot.exists()) {
+    const data = snapshot.data();
+    return data.status === 'ACTIVE'
   }
 
-  return true;
+  return false;
 
 }
 
