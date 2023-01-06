@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.4",
     "@heroicons/react": "^1.0.6",
+    "@paypal/react-paypal-js": "^7.8.2",
     "@tailwindcss/forms": "^0.5.2",
     "autoprefixer": "^10.4.7",
     "css": "^3.0.0",
