@@ -1,3 +1,3 @@
 # kompad-homepage
 
-version 1
+version - 0.19.0
