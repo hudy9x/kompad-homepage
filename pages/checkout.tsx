@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 import { useState } from "react"
 import tpbankQR from "../assets/TPBank-QR.png";
 import ProtectedLayout from "../components/ProtectedLayout"
+import { createTransaction } from "../services/transaction";
 
 const options = {
   "client-id": "AZ7QoF22xQybEpqPcU34AmVgdhfXHJkQguqoy-VdVNQ1P-ngEL6vbMoFO3W8avbXuJeqor1Bv-XhK_7V",
@@ -96,6 +97,7 @@ function OrderSummary({ formik, yearlyCost, monthlyCost }: IOrderSummaryProps) {
 function PaypalButtonWrapper({ unit }: { unit: number }) {
   console.log('Paypal button ', unit)
   const { subTotal, total } = calculateCost(unit, 3, 25);
+
   return <div className="mt-3 border border-gray-200 bg-gray-50 p-3 rounded-md">
     {/*<PayPalButtons 
       createSubscription={(data, actions) => {
@@ -125,7 +127,7 @@ function PaypalButtonWrapper({ unit }: { unit: number }) {
               amount: {
                 currency_code: "USD",
                 // value: total + ''
-                value: '0.1'
+                value: '1'
               }
             }
           ]
@@ -138,6 +140,10 @@ function PaypalButtonWrapper({ unit }: { unit: number }) {
         return new Promise((resolve, reject) => {
           actions.order?.capture().then(function() {
             console.log('success', data, actions)
+            createTransaction({
+              amount: total,
+              status: 'APPROVED'
+            })
             resolve()
           }).catch(() => {
             console.log('failure')
