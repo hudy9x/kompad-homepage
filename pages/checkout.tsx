@@ -5,7 +5,7 @@ import { useRouter } from "next/router"
 import { useState } from "react"
 import tpbankQR from "../assets/TPBank-QR.png";
 import ProtectedLayout from "../components/ProtectedLayout"
-import { createTransaction } from "../services/transaction";
+import { createTransaction, PaymentMethod, TransactionStatus } from "../services/transaction";
 
 const options = {
   "client-id": "AZ7QoF22xQybEpqPcU34AmVgdhfXHJkQguqoy-VdVNQ1P-ngEL6vbMoFO3W8avbXuJeqor1Bv-XhK_7V",
@@ -142,7 +142,8 @@ function PaypalButtonWrapper({ unit }: { unit: number }) {
             console.log('success', data, actions)
             createTransaction({
               amount: total,
-              status: 'APPROVED'
+              status: TransactionStatus.APPROVED,
+              method: PaymentMethod.PAYPAL
             })
             resolve()
           }).catch(() => {

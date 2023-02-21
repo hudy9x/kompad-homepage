@@ -1,29 +1,42 @@
 import { getAuth } from "firebase/auth"
-import { addDoc, collection, doc, Timestamp, updateDoc } from "firebase/firestore"
+import { addDoc, collection, doc, Timestamp, updateDoc, writeBatch } from "firebase/firestore"
 import { db } from "../libs/firebase"
 
-type TransactionStatus = 'PENDING' | 'APPROVED'
+export enum TransactionStatus {
+  PENDING,
+  APPROVED
+}
+
+export enum PaymentMethod {
+  BANK,
+  PAYPAL,
+}
 
 interface ITransaction {
   uid: string
   createdAt: Timestamp
   updatedAt: Timestamp
   amount: number
+  method: PaymentMethod
   currency: string
   email: string
   status: TransactionStatus
 }
 
-export const createTransaction = async ({ amount, status }: Partial<ITransaction>) => {
+const COLLECTION = collection(db, 'transactions')
+const DOC = (id: string) => doc(db, 'transactions', id)
+
+export const createTransaction = async ({ method, amount, status }: Partial<ITransaction>) => {
 
   const auth = getAuth()
   const user = auth.currentUser;
   if (!user) return;
 
-  await addDoc(collection(db, 'transactions'), {
+  await addDoc(COLLECTION, {
     uid: user.uid,
     email: user.email,
     amount,
+    method,
     currency: "USD",
     status,
     createdAt: new Date()
@@ -32,7 +45,7 @@ export const createTransaction = async ({ amount, status }: Partial<ITransaction
 }
 
 export const updateTransaction = async (id: string, status: TransactionStatus) => {
-  const docRef = doc(db, 'transactions', id)
+  const docRef = DOC(id)
 
   await updateDoc(docRef, {
     status
