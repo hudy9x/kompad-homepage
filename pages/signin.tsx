@@ -1,8 +1,10 @@
 import { useFormik } from "formik"
 import Head from "next/head"
+import { useRouter } from "next/router"
 import { signIn } from "../services/sign"
 
 export default function Signin() {
+  const { push } = useRouter()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -12,7 +14,7 @@ export default function Signin() {
       const { email, password } = values;
       signIn(email, password).then(res => {
         console.log(res)
-
+        push('/checkout')
       }).catch(err => {
         console.dir(err)
       })

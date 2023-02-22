@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 interface Props {
   children: JSX.Element | JSX.Element[]
 }
-export default function ProtectedLayout({children}: Props) {
+export default function ProtectedLayout({ children }: Props) {
   const [status, setStatus] = useState('CHECKING');
   const router = useRouter()
 
@@ -45,11 +45,12 @@ export default function ProtectedLayout({children}: Props) {
   }
 
   return (<>
-      <div className="relative bg-white overflow-hidden">
-        <div className="relative">
-          <Menu />
-          {children}
-        </div>
+    <div className="relative bg-white overflow-auto">
+      <div className="relative">
+        <Menu />
+        {children}
       </div>
-    </>
-  );}
+    </div>
+  </>
+  );
+}

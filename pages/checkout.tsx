@@ -1,24 +1,18 @@
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { FormikProps, useFormik } from "formik"
-import Image from "next/image";
 import { useRouter } from "next/router"
 import { useState } from "react"
-import tpbankQR from "../assets/TPBank-QR.png";
 import ProtectedLayout from "../components/ProtectedLayout"
-import { createTransaction, PaymentMethod, TransactionStatus } from "../services/transaction";
+import LocalBankSection from "../containers/Checkout/LocalBankSection";
+import { PaypalSection } from "../containers/Checkout/PayPalSection";
+import { calculateCost } from "../libs/utils";
 
 const options = {
   "client-id": "AZ7QoF22xQybEpqPcU34AmVgdhfXHJkQguqoy-VdVNQ1P-ngEL6vbMoFO3W8avbXuJeqor1Bv-XhK_7V",
   currency: "USD",
-  // intent: "subscription",
-  // vault: true,
-  components: "buttons"
+  components: "buttons",
+  "disable-funding": "card,paylater"
 }
-
-const notificationMethods = [
-  { id: 'local-bank', title: 'Local Bank' },
-  { id: 'paypal', title: 'Paypal' },
-]
 
 interface OrderFormValues {
   email: string
@@ -36,19 +30,6 @@ interface IOrderSummaryProps {
 enum IPaymentMethod {
   PAYPAL = 'PAYPAL',
   BANK = 'BANK'
-}
-
-function calculateCost(unit: number, monthlyCost: number, yearlyCost: number) {
-  const subtotal = unit < 12 ? unit * monthlyCost : yearlyCost;
-  const tax = +(subtotal * 0.1).toFixed(2);
-  const save = subtotal === yearlyCost ? unit * monthlyCost : 0
-  return {
-    subTotal: subtotal,
-    tax,
-    total: subtotal + tax,
-    save,
-    savePercent: Math.floor((monthlyCost * 12 - yearlyCost) * 100 / (monthlyCost * 12))
-  }
 }
 
 function OrderSummary({ formik, yearlyCost, monthlyCost }: IOrderSummaryProps) {
@@ -94,67 +75,6 @@ function OrderSummary({ formik, yearlyCost, monthlyCost }: IOrderSummaryProps) {
   </div>
 }
 
-function PaypalButtonWrapper({ unit }: { unit: number }) {
-  console.log('Paypal button ', unit)
-  const { subTotal, total } = calculateCost(unit, 3, 25);
-
-  return <div className="mt-3 border border-gray-200 bg-gray-50 p-3 rounded-md">
-    {/*<PayPalButtons 
-      createSubscription={(data, actions) => {
-        const plan_id = unit < 12 ? "P-7W548647FS124853JMO35ARI" : "P-2RT52710XY7463523MO35CNA";
-        return actions.subscription.create({
-          plan_id
-          // plan_id: "P-2Y2182645K959235VMO345ZY" // Test Plan
-          // plan_id: "P-7W548647FS124853JMO35ARI" // Monthly 
-          // plan_id: "P-2RT52710XY7463523MO35CNA" // Yearly
-        }).then(orderId => {
-          console.log(orderId)
-          return orderId;
-        })
-      }}
-
-      onApprove={(data, actions) => {
-        console.log('data', data)
-        console.log('actions', actions)
-      }}
-
-      /> */}
-    <PayPalButtons
-      createOrder={(data, action) => {
-        return action.order.create({
-          purchase_units: [
-            {
-              amount: {
-                currency_code: "USD",
-                // value: total + ''
-                value: '1'
-              }
-            }
-          ]
-        }).then(orderId => {
-          console.log('created Order', orderId)
-          return orderId;
-        })
-      }}
-      onApprove={function(data, actions) {
-        return new Promise((resolve, reject) => {
-          actions.order?.capture().then(function() {
-            console.log('success', data, actions)
-            createTransaction({
-              amount: total,
-              status: TransactionStatus.APPROVED,
-              method: PaymentMethod.PAYPAL
-            })
-            resolve()
-          }).catch(() => {
-            console.log('failure')
-            reject()
-          })
-        })
-      }}
-    />
-  </div>
-}
 
 interface IOrderPaymentProps {
   unit: number
@@ -191,36 +111,8 @@ function OrderPayment({ unit }: IOrderPaymentProps) {
         </div>
       </div>
 
-      {paymentMethod === IPaymentMethod.PAYPAL ? <PaypalButtonWrapper unit={unit} /> : null}
-      {paymentMethod === IPaymentMethod.BANK ?
-        <div className={`bank-method`}>
-          <div className="bg-gray-100 inline-flex w-full justify-center p-4 rounded-md border mt-3">
-            <Image src={tpbankQR} alt="Tpban" width="200" height="200" className="" />
-          </div>
-
-          <div className="bank-content mt-3 space-y-1">
-            <div className="flex items-center justify-between">
-              <h2 className="text-gray-500">Chủ tài khoản</h2>
-              <p className="font-bold">NGUYEN HUU DAI</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <h2 className="text-gray-500">Số tài khoản</h2>
-              <p className="font-bold">01005134001</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <h2 className="text-gray-500">Ngân hàng</h2>
-              <p className="font-bold">Tiên Phong Bank (TPBank)</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <h2 className="text-gray-500">Nội dung chuyển khoản</h2>
-              <p className="font-bold">wedse12</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <h2 className="text-gray-500">Tổng tiền</h2>
-              <p className="font-bold text-red-400">{5 * 23450}</p>
-            </div>
-          </div>
-        </div> : null}
+      {paymentMethod === IPaymentMethod.PAYPAL ? <PaypalSection unit={unit} /> : null}
+      {paymentMethod === IPaymentMethod.BANK ? <LocalBankSection unit={unit}/> : null}
     </div>
   </>
 }
