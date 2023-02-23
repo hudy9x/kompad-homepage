@@ -1,6 +1,6 @@
 import dayjs from "dayjs"
 import { getAuth } from "firebase/auth"
-import { addDoc, collection, doc, runTransaction, Timestamp, updateDoc } from "firebase/firestore"
+import { addDoc, collection, doc, runTransaction, setDoc, Timestamp, updateDoc } from "firebase/firestore"
 import { v1 as uuidv4 } from "uuid"
 import { db } from "../libs/firebase"
 import { _doc } from "../libs/utils"
@@ -46,7 +46,7 @@ export const createTransactionNUpdateUserPlan = async ({
         history,
         createdAt: new Date()
       })
-      
+
       console.log('transaction created !')
 
       const planData = planSnapshot.data() as IPlan
@@ -75,5 +75,32 @@ export const updateTransaction = async (id: string, status: TransactionStatus) =
   await updateDoc(docRef, {
     status
   })
+}
+
+export const createTransaction = async ({ unit, amount, method, status, currency, code }: Partial<ITransaction>) => {
+  const auth = getAuth()
+  const user = auth.currentUser
+
+  if (!user) return Promise.reject(0)
+
+  try {
+      const transactionRef = await addDoc(COLLECTION, {
+      uid: user.uid,
+      email: user.email,
+      unit,
+      amount,
+      method,
+      currency,
+      status,
+      code,
+      createdAt: new Date()
+    })
+
+    return Promise.resolve(transactionRef.id)
+  } catch (error) {
+    console.log(error)
+    return Promise.reject(0);
+  }
+
 }
 

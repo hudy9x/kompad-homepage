@@ -32,5 +32,6 @@ export interface ITransaction {
   email: string
   status: TransactionStatus
   history: string
+  code: string
 }
 

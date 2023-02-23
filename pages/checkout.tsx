@@ -112,7 +112,7 @@ function OrderPayment({ unit }: IOrderPaymentProps) {
       </div>
 
       {paymentMethod === IPaymentMethod.PAYPAL ? <PaypalSection unit={unit} /> : null}
-      {paymentMethod === IPaymentMethod.BANK ? <LocalBankSection unit={unit}/> : null}
+      {paymentMethod === IPaymentMethod.BANK ? <LocalBankSection unit={unit} /> : null}
     </div>
   </>
 }
@@ -148,10 +148,7 @@ export default function Checkout() {
 
           <button
             className={`btn btn-primary btn-block mt-4 ${step === 1 ? '' : 'hidden'}`}
-            onClick={() => nextStep(step + 1)}>1/2 Đi tới bước thanh toán</button>
-          <button
-            className={`btn btn-primary btn-block mt-4 ${step === 2 ? '' : 'hidden'}`}
-            onClick={() => nextStep(step + 1)}>2/2 Thanh toán</button>
+            onClick={() => nextStep(step + 1)}>Thanh toán</button>
         </form>
       </div>
     </PayPalScriptProvider>
