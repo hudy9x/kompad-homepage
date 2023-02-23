@@ -54,7 +54,7 @@ export default function PricingPlan({ release }: { release: IRelease }) {
     {
       title: 'Free Trial',
       isFree: true,
-      desc: 'You can try it in 30-days for free. No credits card required.',
+      desc: 'You can try it in 15-days for free. No credits card required.',
       cost: [0, 0],
       included: [
         '15 days usage without any fees',
@@ -96,7 +96,7 @@ export default function PricingPlan({ release }: { release: IRelease }) {
       <div id="pricing-plan" className="pt-32 pb-20 border-b border-gray-300">
         <div className="main-box">
           <h2 className="title2"><span className="text-indigo-500">Pricing</span> plans</h2>
-          <p className="px-8 text-center md:px-0 md:w-[600px] m-auto mt-6">Start taking note for free in 30 days, then add a plan to unlock additional features</p>
+          <p className="px-8 text-center md:px-0 md:w-[600px] m-auto mt-6">Start taking note for free in 15 days, then add a plan to unlock additional features</p>
           <div className="pricing-table mt-10 text-center">
             <div className="pricing-options bg-gray-100 p-0.5 inline-flex rounded-md">
               <button className={`pricing-option btn ${plan === 'year' ? 'selected' : ''}`} onClick={() => setPlan("month")}>Monthly billing</button>
