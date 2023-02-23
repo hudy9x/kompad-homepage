@@ -26,7 +26,7 @@ interface IRelease {
 
 interface IPricingItem {
   title: string
-  isFree?:boolean
+  isFree?: boolean
   btnTitle?: string
   desc: string
   cost: number[]
@@ -52,28 +52,29 @@ export default function PricingPlan({ release }: { release: IRelease }) {
 
   const pricingItems: IPricingItem[] = [
     {
-      title: 'Free Trial', 
+      title: 'Free Trial',
       isFree: true,
-      desc: 'You can try it in 30-days for free. No credits card required.', 
-      cost: [0, 0], 
+      desc: 'You can try it in 30-days for free. No credits card required.',
+      cost: [0, 0],
       included: [
-        '30 days usage without any fees',
+        '15 days usage without any fees',
         'No setup fees',
         'Cloud synchronization',
-        '500 MB Storage'
+        '50 MB Storage'
       ],
       btnTitle: 'Try it'
     },
     {
-      title: 'Pro Plan', 
-      desc: 'Or you can unlock the limited of free plan right now.', 
-      cost: [3, 25], 
+      title: 'Pro Plan',
+      desc: 'Or you can unlock the limited of free plan right now.',
+      cost: [3, 25],
       included: [
         'Unlock all features',
         'No setup fees',
         'Cloud synchronization',
-        '5 GB Storage'
-      ]},
+        '2 GB Storage'
+      ]
+    },
   ]
 
   const selectPlan = (item: IPricingItem) => {
@@ -98,8 +99,8 @@ export default function PricingPlan({ release }: { release: IRelease }) {
           <p className="px-8 text-center md:px-0 md:w-[600px] m-auto mt-6">Start taking note for free in 30 days, then add a plan to unlock additional features</p>
           <div className="pricing-table mt-10 text-center">
             <div className="pricing-options bg-gray-100 p-0.5 inline-flex rounded-md">
-              <button className={`pricing-option btn ${plan === 'year' ? 'selected': ''}`} onClick={() => setPlan("month")}>Monthly billing</button>
-              <button className={`pricing-option btn ${plan === 'month' ? 'selected': ''}`} onClick={() => setPlan("year")}>
+              <button className={`pricing-option btn ${plan === 'year' ? 'selected' : ''}`} onClick={() => setPlan("month")}>Monthly billing</button>
+              <button className={`pricing-option btn ${plan === 'month' ? 'selected' : ''}`} onClick={() => setPlan("year")}>
                 Yearly billing
                 <span className="saving">Save 30%</span>
               </button>
@@ -134,7 +135,7 @@ export default function PricingPlan({ release }: { release: IRelease }) {
                 </div>
               })}
             </div>
-          <p className="px-8 text-center md:px-0 md:w-[600px] m-auto">Payment method support: Paypal, Bank</p>
+            <p className="px-8 text-center md:px-0 md:w-[600px] m-auto">Payment method support: Paypal, Bank</p>
           </div>
         </div>
       </div>
