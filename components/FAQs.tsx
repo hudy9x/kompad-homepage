@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "Is there a free version for newbie ?",
     answer:
-      "No. But you can download and try a trail version in 30 days",
+      "No. But you can download and try a trail version in 15 days",
   },
   {
     question: "Is Kompad support markdown syntax ?",
