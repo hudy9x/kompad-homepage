@@ -1,7 +1,6 @@
 import tpbankQR from "../../assets/TPBank-QR.png";
 import Image from "next/image";
-import { useEffect } from "react";
-import { calculateCost, otpGenerator, toVND } from "../../libs/utils";
+import { calculateCost, otpGenerator, toVND, usdToVND } from "../../libs/utils";
 import useAuthen from "../../hooks/useAuthen";
 import { createTransaction } from "../../services/transaction";
 import { PaymentMethod, TransactionStatus } from "../../services/_type";
@@ -21,13 +20,13 @@ export default function LocalBankSection({ unit }: { unit: number }) {
   const onCreate = () => {
     createTransaction({
       unit,
-      amount: total,
+      amount: usdToVND(total),
       method: PaymentMethod.BANK,
       currency: "VND",
       status: TransactionStatus.PENDING,
       code: otp
     }).then(transactionId => {
-      push(`/confirm-payment?unit=${unit}&amount=${total}&method=PAYPAL&transactionId=${transactionId}`);
+      push(`/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}`);
     })
   }
 
