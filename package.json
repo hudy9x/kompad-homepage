@@ -20,6 +20,7 @@
     "formik": "^2.2.9",
     "next": "12.1.6",
     "post": "^0.0.1",
+    "pusher-js": "^8.0.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
