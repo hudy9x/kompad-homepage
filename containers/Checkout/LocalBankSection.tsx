@@ -5,6 +5,7 @@ import useAuthen from "../../hooks/useAuthen";
 import { createTransaction } from "../../services/transaction";
 import { PaymentMethod, TransactionStatus } from "../../services/_type";
 import { useRouter } from "next/router";
+import { sendNotify } from "../../services/nofication";
 
 export default function LocalBankSection({ unit }: { unit: number }) {
   const { user } = useAuthen()
@@ -27,8 +28,10 @@ export default function LocalBankSection({ unit }: { unit: number }) {
       code: otp
     }).then(transactionId => {
       push(`/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}`);
+        sendNotify('')
     })
   }
+
 
   return <div className={`bank-method`}>
     <div className="bg-gray-100 inline-flex w-full justify-center p-4 rounded-md border mt-3">
@@ -61,10 +64,10 @@ export default function LocalBankSection({ unit }: { unit: number }) {
     <div className="bg-yellow-100 p-3 border border-yellow-200 rounded-lg mt-4 text-yellow-700 whitespace-pre-wrap leading-7 text-sm" >
       📣: Lưu ý <br/>
       1/ Bạn cần ghi rõ nội dung chuyển khoản và số tiền tương ứng. <br/>
-      2/ Nhấn nút &quot;Tạo giao dịch&quot; bên dưới trước/sau khi chuyển khoản<br/>
+      2/ Nhấn nút &quot;Xác nhận&quot; bên dưới <b>sau khi đã chuyển khoản</b><br/>
       2/ Chỉ hỗ trợ ngân hàng Việt Nam
     </div>
-    <button onClick={onCreate} className="btn btn-primary btn-block mt-4">Tạo giao dịch</button>
+    <button onClick={onCreate} className="btn btn-primary btn-block mt-4">Xác nhận</button>
 
   </div>
 }
