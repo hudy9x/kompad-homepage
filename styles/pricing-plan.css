@@ -1,0 +1,25 @@
+.pricing-items {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-10;
+  @apply text-left;
+  @apply py-10 px-8 md:px-0 md:w-[800px] m-auto;
+}
+.pricing-item {
+  @apply border border-gray-200 rounded-md p-8 shadow-lg bg-white;
+  @apply transition hover:scale-105 hover:shadow-gray-300 hover:shadow-2xl;
+}
+
+.pricing-option {
+  @apply relative;
+}
+
+.pricing-option .saving {
+  @apply absolute bg-pink-500 py-1.5 px-2 rounded-md text-white text-xs;
+  @apply rotate-12;
+  top: -20px;
+  right: -30px
+
+}
+
+.pricing-option.selected {
+  @apply bg-gray-100 border-transparent shadow-transparent;
+}

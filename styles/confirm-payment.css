@@ -1,0 +1,36 @@
+.confirm-table {
+  
+}
+
+.tbr{
+  @apply grid grid-cols-2 border-x border-indigo-100;
+}
+
+.tbr:first-child {
+  @apply rounded-t-md
+}
+
+.tbr:first-child .tbc:first-child {
+  @apply rounded-tl-md;
+}
+
+.tbr:first-child .tbc:last-child {
+  @apply rounded-tr-md;
+}
+
+.tbr:last-child {
+  @apply rounded-b-md
+}
+
+.tbc:first-child {
+  @apply bg-indigo-50
+}
+
+.tbc {
+  @apply px-2 py-2 border-t border-indigo-100 text-sm;
+}
+
+.tbr:last-child{
+  @apply border-b border-indigo-100;
+}
+

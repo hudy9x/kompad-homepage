@@ -25,7 +25,6 @@ export default function AutoActiveMenu({ ratio, name, children }: Props) {
           const menuItem = document.querySelector(`.menu-item[data-name="${name}"]`) as HTMLSpanElement
           if (!menuItem) return
 
-          console.log(name, ratio)
           // allItem.forEach(item => item.classList.remove('active'));
 
           if (ratio < activeRatio) {
