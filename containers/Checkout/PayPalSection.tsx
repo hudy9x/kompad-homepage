@@ -57,12 +57,13 @@ export function PaypalSection({ unit }: { unit: number }) {
                   method: PaymentMethod.PAYPAL,
                   history: JSON.stringify(captures),
                 }).then((transactionId) => {
-                    sendNotify({
-                      method: "PAYPAL",
-                      amount: total,
-                      unit,
-                      email: user?.email || ''
-                    })
+                  sendNotify({
+                    method: "PAYPAL",
+                    amount: total,
+                    unit,
+                    email: user?.email || ''
+                  })
+
                   push(
                     `/confirm-payment?unit=${unit}&amount=${total}&method=PAYPAL&transactionId=${transactionId}`
                   );
