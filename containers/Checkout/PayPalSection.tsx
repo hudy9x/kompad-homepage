@@ -1,4 +1,5 @@
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { CreateOrderData, CreateOrderActions } from "@paypal/paypal-js/types/components/buttons";
 import {
   OnApproveData,
   OnApproveActions,
@@ -84,7 +85,7 @@ export function PaypalSection({ unit }: { unit: number }) {
     });
   };
 
-  const onCreateOrder = (data, action) => {
+  const onCreateOrder = (data: CreateOrderData, action: CreateOrderActions): Promise<string> => {
     const isProd = process.env.NODE_ENV === "production";
     const value = isProd ? total + "" : "1";
 
@@ -107,6 +108,7 @@ export function PaypalSection({ unit }: { unit: number }) {
       })
       .catch((err: Record<string, unknown>) => {
         console.log("create order error", err);
+        return ""
       });
   };
 
