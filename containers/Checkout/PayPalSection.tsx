@@ -7,8 +7,11 @@ import { calculateCost } from "../../libs/utils";
 import { createTransactionNUpdateUserPlan } from "../../services/transaction";
 import { PaymentMethod, TransactionStatus } from "../../services/_type";
 import { useRouter } from "next/router";
+import { sendNotify } from "../../services/notification";
+import useAuthen from "../../hooks/useAuthen";
 
 export function PaypalSection({ unit }: { unit: number }) {
+  const { user, checking } = useAuthen()
   const { push } = useRouter();
   const { total } = calculateCost(unit, 3, 25);
 
@@ -54,6 +57,12 @@ export function PaypalSection({ unit }: { unit: number }) {
                   method: PaymentMethod.PAYPAL,
                   history: JSON.stringify(captures),
                 }).then((transactionId) => {
+                    sendNotify({
+                      method: "PAYPAL",
+                      amount: total,
+                      unit,
+                      email: user?.email || ''
+                    })
                   push(
                     `/confirm-payment?unit=${unit}&amount=${total}&method=PAYPAL&transactionId=${transactionId}`
                   );
