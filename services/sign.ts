@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { doc, collection, getDoc, getDocs, limit, query, where } from "firebase/firestore"
 import { auth, db } from "../libs/firebase"
 
@@ -23,6 +23,10 @@ export const signIn = (email: string, password: string): Promise<string> => {
       reject(err.code)
     })
   })
+}
+
+export const signOutNow = () => {
+  return signOut(auth)
 }
 
 export const isUserVerified = async (uid: string) => {

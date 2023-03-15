@@ -1,5 +1,6 @@
 import { useFormik } from "formik"
 import Head from "next/head"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { signIn } from "../services/sign"
 
@@ -31,9 +32,11 @@ export default function Signin() {
         <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to Kompad</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
-          <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-            register your account
-          </a>
+          <Link href="https://web.kompad.app/signup" >
+            <a className="font-medium text-indigo-600 hover:text-indigo-500">
+              register your account
+            </a>
+          </Link>
         </p>
       </div>
 
