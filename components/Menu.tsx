@@ -37,7 +37,7 @@ export default function Menu() {
   console.log(user);
 
   if (checking) {
-    return '...'
+    return <div>....</div>
   }
 
   return (

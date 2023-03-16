@@ -1,11 +1,12 @@
-import Head from 'next/head';
-import Menu from '../components/Menu';
+import Head from "next/head";
+import Menu from "../components/Menu";
 
 interface Props {
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[];
 }
-export default function Layout({children}: Props) {
-  return (<>
+export default function Layout({ children }: Props) {
+  return (
+    <>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Kompad</title>
@@ -69,4 +70,5 @@ export default function Layout({children}: Props) {
         </div>
       </div>
     </>
-  );}
+  );
+}
