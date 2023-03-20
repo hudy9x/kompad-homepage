@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 const url = process.env.ADMIN_URL || ""
+const appId = process.env.ADMIN_APP_ID || ""
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const body = req.body;
@@ -13,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "app-id": "LANDINGPAGE"
+      "app-id": appId
     },
     body: JSON.stringify({
       title: title,
