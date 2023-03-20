@@ -6,7 +6,7 @@ const appId = process.env.ADMIN_APP_ID || ""
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const body = req.body;
   const title = `Kompad Payment - ${body.method}`
-  const message = `${body.email} sent ${body.amount}☘️ for ${body.unit} month`
+  const message = `${body.email} sent ${(body.amount)}☘️ for ${body.unit} month`
   const adminUrl = (link: string) =>
     `${url.replace(/\/*$/g, '')}/${link.replace(/^\/*/g, '')}`
 
