@@ -8,7 +8,7 @@ import { PaypalSection } from "../containers/Checkout/PayPalSection";
 import { calculateCost } from "../libs/utils";
 
 const options = {
-  "client-id": "AZ7QoF22xQybEpqPcU34AmVgdhfXHJkQguqoy-VdVNQ1P-ngEL6vbMoFO3W8avbXuJeqor1Bv-XhK_7V",
+  "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "",
   currency: "USD",
   components: "buttons",
   "disable-funding": "card,paylater"

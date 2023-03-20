@@ -30,8 +30,8 @@ export const signIn = (email: string, password: string): Promise<string> => {
 };
 
 export const signOutNow = () => {
-  return signOut(auth);
-};
+  return signOut(auth)
+}
 
 export const isUserVerified = async (uid: string) => {
   // const q = query(collection(db, 'users'),

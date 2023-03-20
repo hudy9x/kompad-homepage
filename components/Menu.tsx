@@ -20,12 +20,11 @@ function UserDropdown({ user }: { user: User }) {
       Hi! {user.email}{" "}
       <HiOutlineChevronDown className="w-5 h-5 text-gray-400" />
       <div
-        className={`absolute top-10 right-0 rounded-md bg-white border border-gray-200 shadow-lg text-sm w-[175px] ${
-          visible ? "" : "hidden"
-        }`}
+        className={`absolute top-10 right-0 rounded-md bg-white border border-gray-200 shadow-lg text-sm w-[175px] ${visible ? "" : "hidden"
+          }`}
       >
-        <div className="px-3 py-1.5 hover:bg-gray-100">Profile</div>
-        <div className="px-3 py-1.5 hover:bg-gray-100">Billings</div>
+        {/*<div className="px-3 py-1.5 hover:bg-gray-100">Profile</div>*/}
+        {/*<div className="px-3 py-1.5 hover:bg-gray-100">Billings</div>*/}
         <div onClick={logout} className="px-3 py-1.5 hover:bg-gray-100">Logout</div>
       </div>
     </div>
@@ -34,11 +33,6 @@ function UserDropdown({ user }: { user: User }) {
 
 export default function Menu() {
   const { user, checking } = useAuthen();
-  console.log(user);
-
-  if (checking) {
-    return <div>....</div>
-  }
 
   return (
     <div
@@ -75,7 +69,7 @@ export default function Menu() {
               FAQs
             </span>
           </Link>
-          {!checking && user ? (
+          {checking ? <span className="menu-item">...</span> : !checking && user ? (
             <UserDropdown user={user} />
           ) : (
             <Link href={"/signin"}>
