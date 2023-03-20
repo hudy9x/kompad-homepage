@@ -29,9 +29,9 @@ export default function LocalBankSection({ unit }: { unit: number }) {
       status: TransactionStatus.PENDING,
       code: otp,
     }).then((transactionId) => {
-      // push(
-      //   `/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}`
-      // );
+      push(
+        `/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}`
+      );
       sendNotify({
         method: "BANK",
         amount: usdToVND(total),

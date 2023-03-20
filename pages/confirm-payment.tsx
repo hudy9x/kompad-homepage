@@ -3,10 +3,14 @@ import fireworkPng from "../assets/firework.png";
 import Image from "next/image";
 import useAuthen from "../hooks/useAuthen";
 import Link from "next/link";
+import { toVND } from "../libs/utils";
 
 export default function ConfirmPayment() {
   const { user } = useAuthen();
   const router = useRouter();
+  const query = router.query;
+  const method = query.method
+  const amount = parseInt(query.amount as string, 10) || 0
 
   return (
     <div className="h-screen w-screen overflow-hidden flex items-center justify-center bg-indigo-50">
@@ -22,8 +26,7 @@ export default function ConfirmPayment() {
         </div>
         <h1 className="text-3xl font-bold text-center">Congratulations</h1>
         <p className="text-center text-gray-500">
-          Thank you for your payment! Your transaction has been completed
-          successfully.{" "}
+          Thank you for your payment! {method === "BANK" ? "Your transaction has been reviewing." : "Your transaction has been completed successfully."}
         </p>
         <div className="confirm-table">
           <div className="tbr">
@@ -40,7 +43,7 @@ export default function ConfirmPayment() {
           </div>
           <div className="tbr">
             <div className="tbc">Amount</div>
-            <div className="tbc">${router.query.amount}</div>
+            <div className="tbc">{method === "BANK" ? `${toVND(amount)}` : `$${amount}`}</div>
           </div>
           <div className="tbr">
             <div className="tbc">Transaction Id</div>

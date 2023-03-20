@@ -15,8 +15,7 @@ export default function useAuthen() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log('123')
-      setUserState((prev) => ({...prev, ...{checking: false, user}}))
+      setUserState((prev) => ({ ...prev, ...{ checking: false, user } }))
     })
 
   }, [])
