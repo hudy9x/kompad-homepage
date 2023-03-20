@@ -1,6 +1,4 @@
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import Menu from "../components/Menu";
 import Intro from "../components/Intro";
 import Features from "../components/Features";
 import Accessibility from "../components/Accessibility";
