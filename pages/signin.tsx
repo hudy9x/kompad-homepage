@@ -35,7 +35,7 @@ export default function Signin() {
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{" "}
-            <Link href="https://web.kompad.app/signup">
+            <Link href="/signup">
               <a className="font-medium text-indigo-600 hover:text-indigo-500">
                 register your account
               </a>
@@ -43,8 +43,8 @@ export default function Signin() {
           </p>
         </div>
 
-        <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="mt-8 sm:mx-auto sm:w-[350px] sm:max-w-md">
+          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-6">
             <form className="space-y-6" onSubmit={formik.handleSubmit}>
               <div>
                 <label
