@@ -104,7 +104,7 @@ kbd {
 
 .theme-item {
   @apply inline-flex relative;
-  box-shadow: -20px 15px 20px -10px rgba(0,0,0,.5), 4px 0px 10px rgba(0,0,0,.1);
+  box-shadow: -20px 15px 20px -10px rgba(0,0,0,.3), 4px 0px 10px rgba(0,0,0,.1);
 }
 
 .bg-pattern-1 {

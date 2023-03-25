@@ -8,8 +8,8 @@ import { signOutNow } from "../services/sign";
 function UserDropdown({ user }: { user: User }) {
   const [visible, setVisible] = useState(false);
   const logout = () => {
-    signOutNow()
-  }
+    signOutNow();
+  };
   return (
     <div
       className="px-2 py-1 rounded-md cursor-pointer inline-flex relative"
@@ -20,12 +20,15 @@ function UserDropdown({ user }: { user: User }) {
       Hi! {user.email}{" "}
       <HiOutlineChevronDown className="w-5 h-5 text-gray-400" />
       <div
-        className={`absolute top-10 right-0 rounded-md bg-white border border-gray-200 shadow-lg text-sm w-[175px] ${visible ? "" : "hidden"
-          }`}
+        className={`absolute top-10 right-0 rounded-md bg-white border border-gray-200 shadow-lg text-sm w-[175px] ${
+          visible ? "" : "hidden"
+        }`}
       >
         {/*<div className="px-3 py-1.5 hover:bg-gray-100">Profile</div>*/}
         {/*<div className="px-3 py-1.5 hover:bg-gray-100">Billings</div>*/}
-        <div onClick={logout} className="px-3 py-1.5 hover:bg-gray-100">Logout</div>
+        <div onClick={logout} className="px-3 py-1.5 hover:bg-gray-100">
+          Logout
+        </div>
       </div>
     </div>
   );
@@ -69,7 +72,14 @@ export default function Menu() {
               FAQs
             </span>
           </Link>
-          {checking ? <span className="menu-item">...</span> : !checking && user ? (
+          <Link href={"/#about"}>
+            <span className="menu-item" data-name="faqs">
+              About
+            </span>
+          </Link>
+          {checking ? (
+            <span className="menu-item">...</span>
+          ) : !checking && user ? (
             <UserDropdown user={user} />
           ) : (
             <Link href={"/signin"}>

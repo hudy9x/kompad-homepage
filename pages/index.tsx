@@ -9,6 +9,7 @@ import FAQs from "../components/FAQs";
 import Footer from "../components/Footer";
 import AutoActiveMenu from "../components/AutoActiveMenu";
 import Layout from "../components/Layout";
+import About from "../components/About";
 
 interface IReleaseAsset {
   browser_download_url: string;
@@ -37,7 +38,7 @@ export default function Home({ release }: { release: IRelease }) {
   const links = {
     win: windowDownloadLink,
     mac: macDownloadLink,
-    linux: linuxDownloadLink
+    linux: linuxDownloadLink,
   };
 
   return (
@@ -48,17 +49,17 @@ export default function Home({ release }: { release: IRelease }) {
         <Accessibility />
       </AutoActiveMenu>
       <Theme />
-      <LoveByUsers />
       <Download version={version} link={links} />
       <FAQs />
+      <About />
       <Footer />
     </>
   );
 }
 
 Home.getLayout = function getLayout(page: JSX.Element) {
-  return <Layout>{page}</Layout>
-}
+  return <Layout>{page}</Layout>;
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://komersions.vercel.app/api/release/latest");
