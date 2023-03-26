@@ -21,7 +21,7 @@ body, html {
 
 .title2 {
   color: #29282f;
-  @apply text-2xl sm:text-4xl text-center font-extrabold;
+  @apply text-3xl sm:text-4xl text-center font-extrabold;
   text-shadow: 5px 5px #e3e3e3;
 }
 
