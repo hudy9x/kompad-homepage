@@ -18,7 +18,7 @@ export default function Theme() {
           <p className="text-center pt-8">
             A bunches of theme for you. Or build your own
           </p>
-          <div className="mt-10 text-center">
+          <div className="mt-10 text-center flex justify-center">
             <div className="theme-item">
               <Image
                 src={theme1}
@@ -28,7 +28,7 @@ export default function Theme() {
                 height={714}
               />
             </div>
-            <div className="theme-item -ml-72 relative z-10">
+            <div className="theme-item -ml-60 sm:-ml-72 relative z-10">
               <Image
                 src={theme2}
                 alt="theme 1"
@@ -37,7 +37,7 @@ export default function Theme() {
                 height={714}
               />
             </div>
-            <div className="theme-item -ml-72 z-10 relative">
+            <div className="theme-item -ml-60 sm:-ml-72 z-10 relative">
               <Image
                 src={theme3}
                 alt="theme 1"

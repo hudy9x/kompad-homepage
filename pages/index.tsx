@@ -3,13 +3,14 @@ import Intro from "../components/Intro";
 import Features from "../components/Features";
 import Accessibility from "../components/Accessibility";
 import Theme from "../components/Theme";
-import LoveByUsers from "../components/LovedByUsers";
+// import LoveByUsers from "../components/LovedByUsers";
 import Download from "../components/Download";
 import FAQs from "../components/FAQs";
 import Footer from "../components/Footer";
 import AutoActiveMenu from "../components/AutoActiveMenu";
 import Layout from "../components/Layout";
 import About from "../components/About";
+import GotoTop from "../components/GotoTop";
 
 interface IReleaseAsset {
   browser_download_url: string;
@@ -53,6 +54,7 @@ export default function Home({ release }: { release: IRelease }) {
       <FAQs />
       <About />
       <Footer />
+      <GotoTop/>
     </>
   );
 }

@@ -6,7 +6,7 @@ const faqs = [
   {
     question: "What platforms does Kompad support ?",
     answer:
-      "For now, we only support web and desktop versions. You can visit web version on https://kompad.vercel.app",
+      "For now, we only support desktop versions. But you can visit trail web version on https://web.kompad.app",
   },
   {
     question: "Is there a free version for newbie ?",
@@ -19,8 +19,7 @@ const faqs = [
   },
   {
     question: "Can i share my document to others ?",
-    answer:
-      "Yes, you can. Just right click on the document and select 'Share' button.",
+    answer: "We're working on it ...",
   },
   // More questions...
 ];
@@ -32,13 +31,13 @@ function classNames(...classes: string[]) {
 export default function FAQs() {
   return (
     <AutoActiveMenu name="faqs">
-      <div className="bg-gray-50 py-[150px]" id="faqs">
+      <div className="bg-gray-50 py-[70px] sm:py-[150px]" id="faqs">
         <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl divide-y-2 divide-gray-200">
             <h2 className="title2 pb-12 capitalize">
               Frequently asked <span className="text-pink-400">questions</span>
             </h2>
-            <dl className="mt-6 space-y-6 divide-y divide-gray-200">
+            <dl className="mt-6 space-y-6 divide-y divide-gray-200 px-6">
               {faqs.map((faq, index) => (
                 <Disclosure as="div" key={index} className="pt-6">
                   {({ open }) => (

@@ -19,16 +19,24 @@ export default function Download({ version, link }: Props) {
     <AutoActiveMenu name="download">
       <div
         id="download"
-        className="bg-pattern-1 pt-[200px] pb-[250px] border-b border-gray-200"
+        className="bg-pattern-1 pt-[100px] sm:pt-[200px] pb-[150px] sm:pb-[250px] border-b border-gray-200"
       >
         <div className="main-box">
-          <h2 className="title2 pb-16">
+          <h2 className="title2 pb-16 px-5">
             want to try <span className="title-hl4">Kompad</span> ?
           </h2>
           <div className="flex justify-center">
             <div className="space-y-5">
-              <div className="flex items-start gap-8 p-12 bg-white/80 rounded-lg shadow-2xl">
-                <Image src={appIcon} alt="App icon" height={120} width={106} />
+              <div className="flex items-start px-6 py-4 sm:gap-8 sm:p-12 bg-white/80 rounded-lg shadow-2xl">
+                <div className="hidden sm:block">
+                  <Image
+                    src={appIcon}
+                    alt="App icon"
+                    height={120}
+                    width={106}
+                    className=""
+                  />
+                </div>
                 <div>
                   <small className="text-xs text-yellow-600">
                     Version {version}

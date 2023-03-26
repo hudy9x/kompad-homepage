@@ -19,17 +19,17 @@ export default function About() {
   ];
   return (
     <AutoActiveMenu name="about">
-      <div className="bg-white border-t py-[100px]" id="about">
+      <div className="bg-white border-t py-[70px] sm:py-[100px]" id="about">
         <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
             <h2 className="title2 pb-5 capitalize">
               Me and <span className="text-cyan-500">friends</span>
             </h2>
-            <p className="text-center pt-3 w-[500px] m-auto">
+            <p className="text-center pt-3 px-4 sm:w-[500px] m-auto">
               Here are friends who helped me to build Kompad. Thanks for your
               supports, you guys are amazing !
             </p>
-            <div className="flex items-center gap-10 justify-center mt-14">
+            <div className="flex flex-col sm:flex-row items-center gap-10 justify-center mt-14">
               {teams.map((member, index) => {
                 const size = 100;
                 return (
