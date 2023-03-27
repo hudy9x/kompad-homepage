@@ -1,4 +1,5 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
+// import Head from "next/head";
 import Menu from "../components/Menu";
 
 interface Props {
@@ -7,7 +8,19 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <>
-      <Head>
+      <NextSeo
+        title="Kompad - a simple editor application that built for developers"
+        description="Kompad is a text note application that helps users stay organized and productive. It supports MacOS, Windows, and Linux and syncs data in real-time, so you can access your notes from anywhere. You can organize notes by folders and tags, making it easy to find what you need. Kompad also supports Markdown syntax, allowing you to format notes and add emphasis. Whether you're a writer, student, or someone who needs to keep track of information, Kompad is a simple and powerful tool for all your note-taking needs."
+        canonical="https://www.canonical.ie/"
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "/favicon.png",
+          },
+        ]}
+      />
+      {/* 
+<Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Kompad</title>
         <meta
@@ -17,6 +30,7 @@ export default function Layout({ children }: Props) {
                   số thứ tự, hightlight nội dung hay tạo checklist đơn giản"
         ></meta>
       </Head>
+*/}
       <div className="relative bg-white overflow-hidden">
         <div
           className="hidden lg:block lg:absolute lg:inset-0"
