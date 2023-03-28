@@ -44,7 +44,7 @@ export default function Home({ release }: { release: IRelease }) {
 
   return (
     <>
-      <Intro />
+      <Intro link={links} />
       <AutoActiveMenu name="features" ratio={0.3}>
         <Features />
         <Accessibility />

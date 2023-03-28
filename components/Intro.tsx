@@ -1,8 +1,19 @@
 import Image from "next/image";
+import { IoLogoApple } from "react-icons/io";
+import { RiWindowsFill } from "react-icons/ri";
+import { SiLinux } from "react-icons/si";
 import appImg2 from "../assets/app2.png";
 import AutoActiveMenu from "./AutoActiveMenu";
 
-export default function Intro() {
+export default function Intro({
+  link,
+}: {
+  link: {
+    win: string;
+    mac: string;
+    linux: string;
+  };
+}) {
   return (
     <AutoActiveMenu name="intro">
       <div
@@ -19,6 +30,20 @@ export default function Intro() {
               A beautiful app that allows you to create, edit, synchonize your
               techinal document. Even custom your own look
             </p>
+
+            <div className="flex justify-center gap-3 pt-3">
+              <a href={link.win} className="btn space-x-2">
+                <RiWindowsFill /> <span>Window</span>
+              </a>
+              <a href={link.mac} className="btn space-x-2">
+                {" "}
+                <IoLogoApple /> <span>MacOS</span>
+              </a>
+              <a href={link.linux} className="btn space-x-2">
+                {" "}
+                <SiLinux /> <span>Linux</span>
+              </a>
+            </div>
           </div>
 
           <div className="inline-flex shadow-2xl shadow-gray-900">
