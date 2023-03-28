@@ -3,9 +3,10 @@ import { NextSeo } from "next-seo";
 import Menu from "../components/Menu";
 
 interface Props {
+  version: string
   children: JSX.Element | JSX.Element[];
 }
-export default function Layout({ children }: Props) {
+export default function Layout({ version, children }: Props) {
   return (
     <>
       <NextSeo
@@ -79,7 +80,7 @@ export default function Layout({ children }: Props) {
         </div>
 
         <div className="relative">
-          <Menu />
+          <Menu version={version} />
           {children}
         </div>
       </div>

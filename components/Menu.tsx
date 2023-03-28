@@ -102,7 +102,7 @@ function MainMenu({
   );
 }
 
-export default function Menu() {
+export default function Menu({ version }: { version: string }) {
   const [visible, setVisible] = useState(false);
   const toggleMenu = () => {
     setVisible(!visible);
@@ -114,7 +114,16 @@ export default function Menu() {
     >
       <div className="main-box flex items-center justify-between px-4 sm:px-0">
         <div className="logo flex items-center justify-between w-full sm:inline sm:w-auto">
-          <Link href="/">Kompad</Link>
+          <Link href="/">
+            <a className="flex items-center gap-2">
+              Kompad{" "}
+              {version ? (
+                <span className="text-xs px-2 py-0.5 bg-yellow-100 text-yellow-700 font-normal rounded-lg">
+                  {version}
+                </span>
+              ) : null}
+            </a>
+          </Link>
           {visible ? (
             <HiOutlineX
               className="active:text-gray-400 text-gray-600 sm:hidden"

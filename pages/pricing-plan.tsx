@@ -88,7 +88,7 @@ export default function PricingPlan({ release }: { release: IRelease }) {
   };
 
   return (
-    <>
+    <Layout version={version}>
       <Head>
         {" "}
         <title>Pricing plan</title>{" "}
@@ -187,13 +187,13 @@ export default function PricingPlan({ release }: { release: IRelease }) {
       </div>
       <FAQs />
       <Footer />
-    </>
+    </Layout>
   );
 }
 
-PricingPlan.getLayout = function getLayout(page: JSX.Element) {
-  return <Layout>{page}</Layout>;
-};
+// PricingPlan.getLayout = function getLayout(page: JSX.Element) {
+//   return <Layout>{page}</Layout>;
+// };
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://komersions.vercel.app/api/release/latest");

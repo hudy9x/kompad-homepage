@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -25,12 +26,20 @@ export default function Signin() {
   });
   return (
     <div id="signin" className="bg-pattern-1 h-screen">
-      <Head>
-        <title>Sign in</title>
-      </Head>
+      <NextSeo
+        title="Sign in"
+        description="Kompad is a text note application that helps users stay organized and productive. It supports MacOS, Windows, and Linux and syncs data in real-time, so you can access your notes from anywhere. You can organize notes by folders and tags, making it easy to find what you need. Kompad also supports Markdown syntax, allowing you to format notes and add emphasis. Whether you're a writer, student, or someone who needs to keep track of information, Kompad is a simple and powerful tool for all your note-taking needs."
+        canonical="https://www.canonical.ie/"
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "/favicon.png",
+          },
+        ]}
+      />
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="mt-6 text-center text-2xl font-bold tracking-tight text-gray-900">
             Sign in to Kompad
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -121,6 +130,9 @@ export default function Signin() {
                 >
                   Sign in
                 </button>
+                <Link href="/">
+                  <a className="text-xs text-gray-400 hover:text-gray-500 pt-3 block text-center ">Back to home</a>
+                </Link>
               </div>
             </form>
           </div>

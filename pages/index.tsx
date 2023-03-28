@@ -11,22 +11,8 @@ import AutoActiveMenu from "../components/AutoActiveMenu";
 import Layout from "../components/Layout";
 import About from "../components/About";
 import GotoTop from "../components/GotoTop";
+import { IRelease } from "../types";
 
-interface IReleaseAsset {
-  browser_download_url: string;
-  size: number;
-  download_count: number;
-  name: string;
-}
-
-interface IRelease {
-  all_releases: string;
-  author: string;
-  published_at: string;
-  release_notes: string;
-  releases: IReleaseAsset[];
-  tag_name: string;
-}
 
 export default function Home({ release }: { release: IRelease }) {
   const { releases, tag_name: version } = release;
@@ -43,8 +29,8 @@ export default function Home({ release }: { release: IRelease }) {
   };
 
   return (
-    <>
-      <Intro link={links} />
+    <Layout version={version}>
+      <Intro />
       <AutoActiveMenu name="features" ratio={0.3}>
         <Features />
         <Accessibility />
@@ -55,13 +41,13 @@ export default function Home({ release }: { release: IRelease }) {
       <About />
       <Footer />
       <GotoTop/>
-    </>
+    </Layout>
   );
 }
 
-Home.getLayout = function getLayout(page: JSX.Element) {
-  return <Layout>{page}</Layout>;
-};
+// Home.getLayout = function getLayout(page: JSX.Element) {
+//   return <Layout>{page}</Layout>;
+// };
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://komersions.vercel.app/api/release/latest");
