@@ -8,5 +8,5 @@ export const sendNotification = (message: string) => {
     content: message,
     avatar_url: "https://www.kompad.app/favicon.png",
     username: "Kompad",
-  });
+  })
 };
