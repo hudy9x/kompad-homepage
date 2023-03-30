@@ -27,6 +27,7 @@ export default async function handler(
     }),
   });
 
+  // send notification via Discord
   sendNotification(`${body.method === "PAYPAL" ? "🎁" : "💳"} ${message}`);
 
   return res.status(200).end();

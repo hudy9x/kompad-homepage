@@ -32,12 +32,12 @@ export default function LocalBankSection({ unit }: { unit: number }) {
       push(
         `/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}`
       );
-      sendNotify({
-        method: "BANK",
-        amount: usdToVND(total),
-        unit,
-        email: email || "",
-      });
+      // sendNotify({
+      //   method: "BANK",
+      //   amount: usdToVND(total),
+      //   unit,
+      //   email: email || "",
+      // });
     });
   };
 

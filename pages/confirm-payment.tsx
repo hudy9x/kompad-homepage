@@ -4,13 +4,27 @@ import Image from "next/image";
 import useAuthen from "../hooks/useAuthen";
 import Link from "next/link";
 import { toVND } from "../libs/utils";
+import { useEffect } from "react";
+import { sendNotify } from "../services/notification";
 
 export default function ConfirmPayment() {
   const { user } = useAuthen();
   const router = useRouter();
   const query = router.query;
-  const method = query.method
-  const amount = parseInt(query.amount as string, 10) || 0
+  const unit = query.unit as string;
+  const method = query.method as string;
+  const amount = parseInt(query.amount as string, 10) || 0;
+
+  useEffect(() => {
+    if (user?.email && amount && method && unit) {
+      sendNotify({
+        method: method,
+        amount: amount,
+        unit: parseInt(unit, 10),
+        email: user?.email || "",
+      });
+    }
+  }, [user, amount, method, unit]);
 
   return (
     <div className="h-screen w-screen overflow-hidden flex items-center justify-center bg-indigo-50">
@@ -26,7 +40,10 @@ export default function ConfirmPayment() {
         </div>
         <h1 className="text-3xl font-bold text-center">Congratulations</h1>
         <p className="text-center text-gray-500">
-          Thank you for your payment! {method === "BANK" ? "Your transaction has been reviewing." : "Your transaction has been completed successfully."}
+          Thank you for your payment!{" "}
+          {method === "BANK"
+            ? "Your transaction has been reviewing."
+            : "Your transaction has been completed successfully."}
         </p>
         <div className="confirm-table">
           <div className="tbr">
@@ -43,7 +60,9 @@ export default function ConfirmPayment() {
           </div>
           <div className="tbr">
             <div className="tbc">Amount</div>
-            <div className="tbc">{method === "BANK" ? `${toVND(amount)}` : `$${amount}`}</div>
+            <div className="tbc">
+              {method === "BANK" ? `${toVND(amount)}` : `$${amount}`}
+            </div>
           </div>
           <div className="tbr">
             <div className="tbc">Transaction Id</div>
