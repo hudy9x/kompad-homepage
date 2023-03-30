@@ -14,7 +14,7 @@ export default function Layout({ version, children }: Props) {
   return (
     <>
       <NextSeo
-        title="Kompad - a note-taking app that built for developers"
+        title="Kompad"
         description="Kompad is a note-taking app that helps users stay organized and productive. It supports MacOS, Windows, and Linux and syncs data in real-time, so you can access your notes from anywhere. You can organize notes by folders and tags, making it easy to find what you need. Kompad also supports Markdown syntax, allowing you to format notes and add emphasis. Whether you're a writer, student, or someone who needs to keep track of information, Kompad is a simple and powerful tool for all your note-taking needs."
         canonical={href}
         additionalLinkTags={[
