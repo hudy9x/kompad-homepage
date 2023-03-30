@@ -5,7 +5,6 @@ import useAuthen from "../../hooks/useAuthen";
 import { createTransaction } from "../../services/transaction";
 import { PaymentMethod, TransactionStatus } from "../../services/_type";
 import { useRouter } from "next/router";
-import { sendNotify } from "../../services/notification";
 
 export default function LocalBankSection({ unit }: { unit: number }) {
   const { user } = useAuthen();
@@ -30,14 +29,8 @@ export default function LocalBankSection({ unit }: { unit: number }) {
       code: otp,
     }).then((transactionId) => {
       push(
-        `/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}`
+        `/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}&t=${new Date().getTime()}`
       );
-      // sendNotify({
-      //   method: "BANK",
-      //   amount: usdToVND(total),
-      //   unit,
-      //   email: email || "",
-      // });
     });
   };
 

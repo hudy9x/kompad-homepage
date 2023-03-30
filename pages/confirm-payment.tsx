@@ -6,6 +6,7 @@ import Link from "next/link";
 import { toVND } from "../libs/utils";
 import { useEffect } from "react";
 import { sendNotify } from "../services/notification";
+import dayjs from "dayjs";
 
 export default function ConfirmPayment() {
   const { user } = useAuthen();
@@ -13,18 +14,28 @@ export default function ConfirmPayment() {
   const query = router.query;
   const unit = query.unit as string;
   const method = query.method as string;
+  const expiredTime = query.t as string;
   const amount = parseInt(query.amount as string, 10) || 0;
 
   useEffect(() => {
-    if (user?.email && amount && method && unit) {
-      sendNotify({
-        method: method,
-        amount: amount,
-        unit: parseInt(unit, 10),
-        email: user?.email || "",
-      });
+    if (user?.email && amount && method && unit && expiredTime) {
+      const d2 = dayjs();
+      const s2 = d2.subtract(3, "second");
+      const d1 = dayjs(parseInt(expiredTime, 10));
+
+      if (s2.isBefore(d1)) {
+        console.log("called");
+        sendNotify({
+          method: method,
+          amount: amount,
+          unit: parseInt(unit, 10),
+          email: user?.email || "",
+        });
+      } else {
+        console.log("note called");
+      }
     }
-  }, [user, amount, method, unit]);
+  }, [user, amount, method, unit, expiredTime]);
 
   return (
     <div className="h-screen w-screen overflow-hidden flex items-center justify-center bg-indigo-50">

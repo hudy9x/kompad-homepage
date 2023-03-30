@@ -1,5 +1,8 @@
 import { PayPalButtons } from "@paypal/react-paypal-js";
-import { CreateOrderData, CreateOrderActions } from "@paypal/paypal-js/types/components/buttons";
+import {
+  CreateOrderData,
+  CreateOrderActions,
+} from "@paypal/paypal-js/types/components/buttons";
 import {
   OnApproveData,
   OnApproveActions,
@@ -8,11 +11,8 @@ import { calculateCost } from "../../libs/utils";
 import { createTransactionNUpdateUserPlan } from "../../services/transaction";
 import { PaymentMethod, TransactionStatus } from "../../services/_type";
 import { useRouter } from "next/router";
-import { sendNotify } from "../../services/notification";
-import useAuthen from "../../hooks/useAuthen";
 
 export function PaypalSection({ unit }: { unit: number }) {
-  const { user, checking } = useAuthen()
   const { push } = useRouter();
   const { total } = calculateCost(unit, 3, 25);
 
@@ -45,8 +45,6 @@ export function PaypalSection({ unit }: { unit: number }) {
               const isValid = isProd ? +amount >= +total : true;
               const captures = item.payments?.captures;
 
-              console.log(amount, total, JSON.stringify(captures));
-
               if (isValid) {
                 console.log(
                   `update amount: $${total} and unit ${unit} (month)`
@@ -58,15 +56,8 @@ export function PaypalSection({ unit }: { unit: number }) {
                   method: PaymentMethod.PAYPAL,
                   history: JSON.stringify(captures),
                 }).then((transactionId) => {
-                  // sendNotify({
-                  //   method: "PAYPAL",
-                  //   amount: total,
-                  //   unit,
-                  //   email: user?.email || ''
-                  // })
-
                   push(
-                    `/confirm-payment?unit=${unit}&amount=${total}&method=PAYPAL&transactionId=${transactionId}`
+                    `/confirm-payment?unit=${unit}&amount=${total}&method=PAYPAL&transactionId=${transactionId}&t=${new Date().getTime()}`
                   );
                 });
 
@@ -85,7 +76,10 @@ export function PaypalSection({ unit }: { unit: number }) {
     });
   };
 
-  const onCreateOrder = (data: CreateOrderData, action: CreateOrderActions): Promise<string> => {
+  const onCreateOrder = (
+    data: CreateOrderData,
+    action: CreateOrderActions
+  ): Promise<string> => {
     const isProd = process.env.NODE_ENV === "production";
     const value = isProd ? total + "" : "1";
 
@@ -108,7 +102,7 @@ export function PaypalSection({ unit }: { unit: number }) {
       })
       .catch((err: Record<string, unknown>) => {
         console.log("create order error", err);
-        return ""
+        return "";
       });
   };
 
