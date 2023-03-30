@@ -1,13 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Email from "../assets/email.png";
 import { sendNotifyDiscord } from "../services/notification";
 
 export default function EmailVerification() {
   const router = useRouter();
   const param = router.query;
-  sendNotifyDiscord(`🧔 ${param.email} just registered as an user`);
+
+  useEffect(() => {
+    // sendNotifyDiscord(`🧔 ${param.email} just registered as an user`);
+  }, [param.email]);
 
   return (
     <div className="bg-gray-100 h-screen w-screen flex items-center justify-center">
