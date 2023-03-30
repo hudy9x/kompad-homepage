@@ -13,8 +13,7 @@ import {
   HiOutlineX,
 } from "react-icons/hi";
 import { isValidPassword, toTimestamp } from "../libs/utils";
-import { sendNotifyDiscord } from "../services/notification";
-import { createFreePlan, signIn, signUp, verifyEmail } from "../services/sign";
+import { createFreePlan, signUp, verifyEmail } from "../services/sign";
 import { addUser } from "../services/user";
 
 export default function Signup() {
@@ -68,10 +67,7 @@ And not have spaces`);
           await createFreePlan();
           await verifyEmail();
 
-          sendNotifyDiscord(`🧔 ${email} just registered as an user`);
-          // if (res) {
           push(`/email-verification?email=${email}`);
-          // }
         })
         .catch((error) => {
           console.dir(error.code);

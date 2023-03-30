@@ -2,10 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Email from "../assets/email.png";
+import { sendNotifyDiscord } from "../services/notification";
 
 export default function EmailVerification() {
   const router = useRouter();
   const param = router.query;
+  sendNotifyDiscord(`🧔 ${param.email} just registered as an user`);
+
   return (
     <div className="bg-gray-100 h-screen w-screen flex items-center justify-center">
       <div className="bg-white rounded-md shadow-lg py-10 px-8 text-center font-sans text-gray-500">

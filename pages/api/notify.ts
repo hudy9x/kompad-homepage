@@ -11,7 +11,7 @@ export default async function handler(
   const promises = [];
   const body = req.body;
   const title = `Kompad Payment - ${body.method}`;
-  const message = `${body.email} sent ${body.amount}☘️ for ${body.unit} month`;
+  const message = `${body.email} paied $${body.amount} for ${body.unit} month`;
   const adminUrl = (link: string) =>
     `${url.replace(/\/*$/g, "")}/${link.replace(/^\/*/g, "")}`;
 
@@ -36,7 +36,7 @@ export default async function handler(
   );
 
   Promise.allSettled(promises)
-    .then((result) => {
+    .then(() => {
       console.log("sending notification success");
     })
     .catch((err) => {
