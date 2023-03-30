@@ -8,6 +8,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.method !== "POST") return res.status(400).end()
+
   const promises = [];
   const body = req.body;
   const title = `Kompad Payment - ${body.method}`;
