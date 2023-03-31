@@ -28,8 +28,9 @@ export default function LocalBankSection({ unit }: { unit: number }) {
       status: TransactionStatus.PENDING,
       code: otp,
     }).then((transactionId) => {
+      localStorage.setItem("t", new Date().getTime() + "");
       push(
-        `/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}&t=${new Date().getTime()}`
+        `/confirm-payment?unit=${unit}&amount=${total}&method=BANK&transactionId=${transactionId}}`
       );
     });
   };

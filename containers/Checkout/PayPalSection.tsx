@@ -56,8 +56,9 @@ export function PaypalSection({ unit }: { unit: number }) {
                   method: PaymentMethod.PAYPAL,
                   history: JSON.stringify(captures),
                 }).then((transactionId) => {
+                  localStorage.setItem("t", new Date().getTime() + "");
                   push(
-                    `/confirm-payment?unit=${unit}&amount=${total}&method=PAYPAL&transactionId=${transactionId}&t=${new Date().getTime()}`
+                    `/confirm-payment?unit=${unit}&amount=${total}&method=PAYPAL&transactionId=${transactionId}`
                   );
                 });
 

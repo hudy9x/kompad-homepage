@@ -14,10 +14,10 @@ export default function ConfirmPayment() {
   const query = router.query;
   const unit = query.unit as string;
   const method = query.method as string;
-  const expiredTime = query.t as string;
   const amount = parseInt(query.amount as string, 10) || 0;
 
   useEffect(() => {
+    const expiredTime = localStorage.getItem("t");
     if (user?.email && amount && method && unit && expiredTime) {
       const d2 = dayjs();
       const s2 = d2.subtract(3, "second");
@@ -35,7 +35,7 @@ export default function ConfirmPayment() {
         console.log("note called");
       }
     }
-  }, [user, amount, method, unit, expiredTime]);
+  }, [user, amount, method, unit]);
 
   return (
     <div className="h-screen w-screen overflow-hidden flex items-center justify-center bg-indigo-50">
