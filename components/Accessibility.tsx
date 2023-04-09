@@ -18,7 +18,7 @@ export default function Accessibility() {
       desc: "Group all documents that have same category in one place. Everytime you need to access them, just click on the folder.",
     },
     {
-      src: "/tagging.png",
+      src: "/Tags.png",
       title: "Tagging",
       desc: "Easier to classify your content by tagging it in whatever color you loves.",
     },
@@ -28,7 +28,7 @@ export default function Accessibility() {
       desc: "Keep you always stay update to date to the latest version. When new vesion released a tiny circle will glows to notify you that whether update or not.",
     },
     {
-      src: "/wordcounting.png",
+      src: "/Word Counting.png",
       title: "Word Counting",
       desc: "See how many words, characters, lines you just wrote. Event how long it takes to read the content.",
     },
@@ -65,7 +65,7 @@ export default function Accessibility() {
                 <Image
                   src={item.src}
                   alt="Image"
-                  height={100}
+                  height={200}
                   quality={100}
                   width={300}
                   className="rounded-md"
