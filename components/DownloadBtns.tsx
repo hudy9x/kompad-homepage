@@ -10,6 +10,10 @@ export default function DownloadBtns() {
 
     if (!data.linkDownload) return;
 
+    alert(
+      "⚠ This app is not signed for MacOS or Windows. So you have to bypass security before using it"
+    );
+
     const a = document.createElement("a");
     a.href = data.linkDownload;
     a.click();
