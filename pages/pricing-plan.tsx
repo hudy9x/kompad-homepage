@@ -50,7 +50,7 @@ export default function PricingPlan({ release }: { release: IRelease }) {
 
   const pricingItems: IPricingItem[] = [
     {
-      title: "Free Trial",
+      title: "Trial plan",
       isFree: true,
       desc: "You can try it in 15-days for free. No credits card required.",
       cost: [0, 0],
@@ -105,17 +105,15 @@ export default function PricingPlan({ release }: { release: IRelease }) {
           <div className="pricing-table mt-10 text-center">
             <div className="pricing-options bg-gray-100 p-0.5 inline-flex rounded-md">
               <button
-                className={`pricing-option btn ${
-                  plan === "year" ? "selected" : ""
-                }`}
+                className={`pricing-option btn ${plan === "year" ? "selected" : ""
+                  }`}
                 onClick={() => setPlan("month")}
               >
                 Monthly billing
               </button>
               <button
-                className={`pricing-option btn ${
-                  plan === "month" ? "selected" : ""
-                }`}
+                className={`pricing-option btn ${plan === "month" ? "selected" : ""
+                  }`}
                 onClick={() => setPlan("year")}
               >
                 Yearly billing
@@ -123,6 +121,54 @@ export default function PricingPlan({ release }: { release: IRelease }) {
               </button>
             </div>
             <div className="pricing-items">
+              <div className="pricing-item">
+                <div className="space-y-5">
+                  <h2 className="text-2xl font-bold">Open source</h2>
+                  <p className="text-gray-500">Build you own note-taking app using our open source.</p>
+                  <div className="flex gap-2 items-end">
+                    <span className="text-5xl font-semibold">$0</span>
+                    <span className="text-lg">
+                      forever
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => { window.location.href = 'https://github.com/hudy9x/kompad/tree/main' }}
+                    className="btn btn-block"
+                  >
+                    Go to repo
+                  </button>
+                </div>
+                <div className="included-features border-t border-gray-200 mt-8 pt-4">
+                  <h3 className="mb-1">Unlimited functions</h3>
+
+                  {['All features', 'No setup fee', 'Use your own storage'].map((feature, index) => {
+                    return (
+                      <p
+                        className="text-gray-500 text-sm pt-1.5 flex gap-1.5"
+                        key={index}
+                      >
+                        <svg
+                          className="h-5 w-5 text-green-500"
+                          x-description="Heroicon name: outline/check"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M4.5 12.75l6 6 9-13.5"
+                          ></path>
+                        </svg>
+                        <span>{feature}</span>
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
               {pricingItems.map((item) => {
                 const cost = plan === "year" ? item.cost[1] : item.cost[0];
                 const isFree = cost === 0;

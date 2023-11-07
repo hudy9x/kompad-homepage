@@ -1,7 +1,7 @@
 .pricing-items {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-10;
+  @apply grid grid-cols-1 md:grid-cols-3 gap-10;
   @apply text-left;
-  @apply py-10 px-8 md:px-0 md:w-[800px] m-auto;
+  @apply py-10 px-8 md:px-0 md:w-[1000px] m-auto;
 }
 .pricing-item {
   @apply border border-gray-200 rounded-md p-8 shadow-lg bg-white;
