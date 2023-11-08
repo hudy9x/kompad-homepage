@@ -1,5 +1,5 @@
 import { IoLogoApple } from "react-icons/io";
-import { RiWindowsFill } from "react-icons/ri";
+import { RiGithubFill, RiWindowsFill } from "react-icons/ri";
 import { SiLinux } from "react-icons/si";
 
 export default function DownloadBtns() {
@@ -23,12 +23,15 @@ export default function DownloadBtns() {
       <span className="btn space-x-2" onClick={() => download("win")}>
         <RiWindowsFill /> <span>Window</span>
       </span>
-      <span className="btn space-x-2" onClick={() => download("mac")}>
-        <IoLogoApple /> <span>MacOS</span>
+      <span className="btn space-x-2" onClick={() => (window.location.href = "https://github.com/hudy9x/kompad")}>
+        <RiGithubFill /> <span>Source code</span>
       </span>
-      <span className="btn space-x-2" onClick={() => download("linux")}>
-        <SiLinux /> <span>Linux</span>
-      </span>
+      {/* <span className="btn space-x-2" onClick={() => download("mac")}> */}
+      {/*   <IoLogoApple /> <span>MacOS</span> */}
+      {/* </span> */}
+      {/* <span className="btn space-x-2" onClick={() => download("linux")}> */}
+      {/*   <SiLinux /> <span>Linux</span> */}
+      {/* </span> */}
     </>
   );
 }
