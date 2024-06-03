@@ -72,11 +72,11 @@ function MainMenu({
           Download
         </span>
       </Link>
-      <Link href={"/pricing-plan"}>
+{/*       <Link href={"/pricing-plan"}>
         <span className="menu-item" data-name="download" onClick={onHide}>
           Pricing
         </span>
-      </Link>
+      </Link> */}
       <Link href={"/#faqs"}>
         <span className="menu-item" data-name="faqs" onClick={onHide}>
           FAQs
@@ -87,7 +87,7 @@ function MainMenu({
           About
         </span>
       </Link>
-      {checking ? (
+{/*       {checking ? (
         <span className="menu-item">...</span>
       ) : !checking && user ? (
         <UserDropdown user={user} />
@@ -97,7 +97,7 @@ function MainMenu({
             Sign in
           </span>
         </Link>
-      )}
+      )} */}
     </div>
   );
 }
