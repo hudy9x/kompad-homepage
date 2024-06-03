@@ -2,6 +2,7 @@ import Image from "next/image";
 import appImg2 from "../assets/app2.png";
 import AutoActiveMenu from "./AutoActiveMenu";
 import DownloadBtns from "./DownloadBtns";
+import GithubStar from "./GithubStar";
 
 export default function Intro() {
   return (
@@ -24,6 +25,7 @@ export default function Intro() {
             <div className="flex justify-center gap-3 pt-3">
               <DownloadBtns />
             </div>
+            <GithubStar />
           </div>
 
           <div className="inline-flex shadow-2xl shadow-gray-900">

@@ -6,11 +6,11 @@ const faqs = [
   {
     question: "What platforms does Kompad support ?",
     answer:
-      "For now, we only support desktop versions. But you can visit trail web version on https://web.kompad.app",
+      "For now, we only support desktop versions. But you can host your own web version or install it as PWA",
   },
   {
     question: "Is there a free version for newbie ?",
-    answer: "No. But you can download and try a trail version in 15 days",
+    answer: "It's completely free for you.",
   },
   {
     question: "Is Kompad support markdown syntax ?",
