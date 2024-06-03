@@ -7,13 +7,13 @@ export default function About() {
     {
       name: "@hudy9x",
       avatar: "https://avatars.githubusercontent.com/u/95471659?v=4",
-      role: "Senior Web Developer",
+      role: "Web Developer",
       url: "https://github.com/hudy9x",
     },
     {
       name: "@namnn9x",
       avatar: "https://avatars.githubusercontent.com/u/94043947?v=4",
-      role: "Junior Web Developer",
+      role: "Web Developer",
       url: "https://github.com/namnn9x",
     },
   ];
