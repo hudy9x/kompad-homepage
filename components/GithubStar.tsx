@@ -12,7 +12,7 @@ export default function GithubStar() {
       setStar(starCounter)
     })
   }, [])
-  return <Link href={"https://github.com/hudy9x/namviek"} target="_blank" className="text-white flex justify-center cursor-pointer">
+  return <Link href={"https://github.com/hudy9x/kompad"} target="_blank" className="text-white flex justify-center cursor-pointer">
     <div className="group inline-flex relative items-center justify-center gap-1">
       <FaStar className="text-yellow-500" />
       <span className="px-1 bg-white border rounded-md text-xs">
