@@ -23,7 +23,7 @@ export default function Intro() {
             </p>
 
             <a className="mx-auto" href="https://www.producthunt.com/posts/kompad?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-kompad" 
-              target="_blank">
+              target="_blank" rel="noreferrer" >
               <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=514248&theme=light" 
                 alt="An open-source note-taking app for tech guys | Product Hunt" 
                 style={{width: 250, height: 54}} /></a>
