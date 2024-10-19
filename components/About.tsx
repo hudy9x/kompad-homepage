@@ -8,7 +8,7 @@ export default function About() {
       name: "@hudy9x",
       avatar: "https://avatars.githubusercontent.com/u/95471659?v=4",
       role: "Web Developer",
-      url: "https://github.com/hudy9x",
+      url: "https://hudy9x.com",
     },
     {
       name: "@namnn9x",
