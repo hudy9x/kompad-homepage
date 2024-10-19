@@ -26,7 +26,7 @@ export default function Intro() {
               target="_blank">
               <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=514248&theme=light" 
                 alt="An open-source note-taking app for tech guys | Product Hunt" 
-                style="width: 250px; height: 54px;" width="250" height="54" /></a>
+                style={{width: 250, height: 54}} /></a>
 
             <div className="flex justify-center gap-3 pt-3">
               <DownloadBtns />
