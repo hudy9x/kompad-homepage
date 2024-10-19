@@ -22,6 +22,12 @@ export default function Intro() {
               techinal document. Even custom your own look
             </p>
 
+            <a className="mx-auto" href="https://www.producthunt.com/posts/kompad?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-kompad" 
+              target="_blank">
+              <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=514248&theme=light" 
+                alt="Kompad - An&#0032;open&#0045;source&#0032;note&#0045;taking&#0032;app&#0032;for&#0032;tech&#0032;guys | Product Hunt" 
+                style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
             <div className="flex justify-center gap-3 pt-3">
               <DownloadBtns />
             </div>
