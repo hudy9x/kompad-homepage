@@ -21,6 +21,10 @@ const faqs = [
     question: "Can i share my document to others ?",
     answer: "We're working on it ...",
   },
+  {
+    question: "I found some bugs, How do I report them?",
+    answer: "You can report bugs or find some helps on the repo or my <a href='https://discord.gg/XbYtDQYFPZ'>Discord server</a>",
+  },
   // More questions...
 ];
 
@@ -59,7 +63,7 @@ export default function FAQs() {
                         </Disclosure.Button>
                       </dt>
                       <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                        <p className="text-base text-gray-500">{faq.answer}</p>
+                        <p className="text-base text-gray-500" dangerouslySetInnerHTML={{ __html: faq.answer }}></p>
                       </Disclosure.Panel>
                     </>
                   )}

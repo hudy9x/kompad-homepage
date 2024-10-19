@@ -1,6 +1,7 @@
 import { User } from "firebase/auth";
 import Link from "next/link";
 import { useState } from "react";
+import { FaDiscord } from "react-icons/fa";
 import {
   HiOutlineChevronDown,
   HiOutlineMenuAlt3,
@@ -24,9 +25,8 @@ function UserDropdown({ user }: { user: User }) {
       Hi! {user.email}{" "}
       <HiOutlineChevronDown className="w-5 h-5 text-gray-400" />
       <div
-        className={`absolute top-10 right-0 rounded-md bg-white border border-gray-200 shadow-lg text-sm w-[175px] ${
-          visible ? "" : "hidden"
-        }`}
+        className={`absolute top-10 right-0 rounded-md bg-white border border-gray-200 shadow-lg text-sm w-[175px] ${visible ? "" : "hidden"
+          }`}
       >
         {/*<div className="px-3 py-1.5 hover:bg-gray-100">Profile</div>*/}
         {/*<div className="px-3 py-1.5 hover:bg-gray-100">Billings</div>*/}
@@ -41,7 +41,7 @@ function UserDropdown({ user }: { user: User }) {
 function MainMenu({
   type = "desktop",
   visible,
-  onHide = () => {},
+  onHide = () => { },
 }: {
   type?: string;
   onHide?: () => void;
@@ -51,9 +51,8 @@ function MainMenu({
   const classes =
     type === "desktop"
       ? "hidden sm:block"
-      : `sm:hidden ${
-          visible ? "" : "hidden"
-        } flex flex-col border-t mt-3 px-2 gap-3`;
+      : `sm:hidden ${visible ? "" : "hidden"
+      } flex flex-col border-t mt-3 px-2 gap-3`;
 
   return (
     <div className={classes}>
@@ -72,7 +71,7 @@ function MainMenu({
           Download
         </span>
       </Link>
-{/*       <Link href={"/pricing-plan"}>
+      {/*       <Link href={"/pricing-plan"}>
         <span className="menu-item" data-name="download" onClick={onHide}>
           Pricing
         </span>
@@ -82,12 +81,19 @@ function MainMenu({
           FAQs
         </span>
       </Link>
+      <Link href={"https://github.com/hudy9x/kompad/tree/main/docs"} target='_blank'>
+        <span className="menu-item" data-name="faqs" onClick={onHide}>Doc</span>
+      </Link>
       <Link href={"/#about"}>
         <span className="menu-item" data-name="faqs" onClick={onHide}>
           About
         </span>
       </Link>
-{/*       {checking ? (
+      <Link href="https://discord.gg/XbYtDQYFPZ" target="_blank">
+        <span className="menu-item">Support</span>
+      </Link>
+
+      {/*       {checking ? (
         <span className="menu-item">...</span>
       ) : !checking && user ? (
         <UserDropdown user={user} />
